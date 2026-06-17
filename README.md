@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Drift Landing Page
 
 A production-ready landing page for Drift, a screen-time reduction app. This site is pure marketing, legal documentation, and support—no authentication or account management.
@@ -292,3 +293,6 @@ npx tsc --noEmit
 ## Support
 
 For questions about the landing page, contact driftappcontact@gmail.com
+=======
+# DriftLandingPage
+>>>>>>> 830aa3584093dda88cdf1230fe42778fbc50609a
