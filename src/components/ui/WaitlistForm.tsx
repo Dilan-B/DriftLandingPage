@@ -37,6 +37,10 @@ const WaitlistForm = ({ className, stacked = false }: WaitlistFormProps) => {
     });
 
     if (!response.ok) {
+      const data = (await response.json().catch(() => null)) as {
+        code?: string;
+      } | null;
+      console.error("Waitlist submission failed", data?.code || response.status);
       setStatus("submitError");
       return;
     }
