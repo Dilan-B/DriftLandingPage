@@ -11,15 +11,16 @@ interface WaitlistFormProps {
 
 const WaitlistForm = ({ className, stacked = false }: WaitlistFormProps) => {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "ok" | "err">(
-    "idle"
-  );
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "ok" | "invalid" | "submitError"
+  >("idle");
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const trimmedEmail = email.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail);
     if (!valid) {
-      setStatus("err");
+      setStatus("invalid");
       return;
     }
 
@@ -30,13 +31,13 @@ const WaitlistForm = ({ className, stacked = false }: WaitlistFormProps) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email,
+        email: trimmedEmail,
         source: "homepage-waitlist",
       }),
     });
 
     if (!response.ok) {
-      setStatus("err");
+      setStatus("submitError");
       return;
     }
 
@@ -76,16 +77,18 @@ const WaitlistForm = ({ className, stacked = false }: WaitlistFormProps) => {
         value={email}
         onChange={(e) => {
           setEmail(e.target.value);
-          if (status === "err") setStatus("idle");
+          if (status === "invalid" || status === "submitError") {
+            setStatus("idle");
+          }
         }}
         placeholder="you@example.com"
         className={cn(
           "flex-1 rounded-btn bg-paper-card border px-4 py-3.5 text-[15px] text-ink-deep placeholder:text-ink-faint transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-70",
-          status === "err"
+          status === "invalid" || status === "submitError"
             ? "border-clay focus:border-clay"
             : "border-line focus:border-earn-sage"
         )}
-        aria-invalid={status === "err"}
+        aria-invalid={status === "invalid"}
         disabled={status === "loading"}
       />
       <button
@@ -95,9 +98,14 @@ const WaitlistForm = ({ className, stacked = false }: WaitlistFormProps) => {
       >
         {status === "loading" ? "Joining..." : "Get early access"}
       </button>
-      {status === "err" && (
+      {status === "invalid" && (
         <p className="text-sm text-clay sm:absolute sm:-bottom-6">
-          Please enter a valid email or try again.
+          Please enter a valid email.
+        </p>
+      )}
+      {status === "submitError" && (
+        <p className="text-sm text-clay sm:absolute sm:-bottom-6">
+          That email is valid, but we could not save it yet. Try again soon.
         </p>
       )}
     </form>
