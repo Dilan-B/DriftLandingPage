@@ -11,16 +11,35 @@ interface WaitlistFormProps {
 
 const WaitlistForm = ({ className, stacked = false }: WaitlistFormProps) => {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "ok" | "err">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "ok" | "err">(
+    "idle"
+  );
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!valid) {
       setStatus("err");
       return;
     }
-    // Non-functional placeholder — wire to your provider later.
+
+    setStatus("loading");
+    const response = await fetch("/api/waitlist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        source: "homepage-waitlist",
+      }),
+    });
+
+    if (!response.ok) {
+      setStatus("err");
+      return;
+    }
+
     setStatus("ok");
     setEmail("");
   };
@@ -33,7 +52,7 @@ const WaitlistForm = ({ className, stacked = false }: WaitlistFormProps) => {
           className
         )}
       >
-        You're on the list 🌱 We'll email you when your spot opens.
+        You're on the list. We'll email you when your spot opens.
       </div>
     );
   }
@@ -61,22 +80,24 @@ const WaitlistForm = ({ className, stacked = false }: WaitlistFormProps) => {
         }}
         placeholder="you@example.com"
         className={cn(
-          "flex-1 rounded-btn bg-paper-card border px-4 py-3.5 text-[15px] text-ink-deep placeholder:text-ink-faint transition-colors focus:outline-none",
+          "flex-1 rounded-btn bg-paper-card border px-4 py-3.5 text-[15px] text-ink-deep placeholder:text-ink-faint transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-70",
           status === "err"
             ? "border-clay focus:border-clay"
             : "border-line focus:border-earn-sage"
         )}
         aria-invalid={status === "err"}
+        disabled={status === "loading"}
       />
       <button
         type="submit"
-        className="rounded-btn bg-cta-bg text-cta-text font-medium px-6 py-3.5 text-[15px] shadow-soft hover:bg-cta-bg-hi hover:-translate-y-[1px] active:scale-[0.98] transition-all"
+        disabled={status === "loading"}
+        className="rounded-btn bg-cta-bg text-cta-text font-medium px-6 py-3.5 text-[15px] shadow-soft hover:bg-cta-bg-hi hover:-translate-y-[1px] active:scale-[0.98] transition-all disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
       >
-        Get early access
+        {status === "loading" ? "Joining..." : "Get early access"}
       </button>
       {status === "err" && (
         <p className="text-sm text-clay sm:absolute sm:-bottom-6">
-          Please enter a valid email.
+          Please enter a valid email or try again.
         </p>
       )}
     </form>

@@ -32,8 +32,8 @@ const Footer = () => {
   ];
 
   const social = [
-    { href: "https://instagram.com/joindrift", label: "Instagram" },
-    { href: "https://tiktok.com/@joindrift", label: "TikTok" },
+    { href: "https://www.instagram.com/drift.productivity", label: "Instagram" },
+    { href: "https://www.tiktok.com/@drift_productivity", label: "TikTok" },
   ];
 
   return (

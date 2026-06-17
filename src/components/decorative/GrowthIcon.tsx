@@ -12,9 +12,13 @@ interface GrowthIconProps {
  * Higher stages add height, leaves, and a fuller canopy.
  */
 const GrowthIcon = ({ stage, className, active = false }: GrowthIconProps) => {
-  const stroke = active ? "var(--cta-text)" : "var(--earn-deep)";
-  const fill = active ? "rgba(255,255,255,0.18)" : "var(--earn-sage-lo)";
-  const soil = active ? "rgba(255,255,255,0.4)" : "var(--clay)";
+  const stroke = active
+    ? "var(--growth-icon, var(--cta-text))"
+    : "var(--earn-deep)";
+  const fill = active
+    ? "var(--growth-icon-fill, rgba(255,255,255,0.18))"
+    : "var(--earn-sage-lo)";
+  const soil = active ? "var(--growth-icon-soil, rgba(255,255,255,0.4))" : "var(--clay)";
 
   // Stem grows taller with stage.
   const stemTop = 96 - stage * 11; // 96 → 30

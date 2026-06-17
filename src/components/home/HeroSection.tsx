@@ -36,7 +36,7 @@ const HeroSection = () => {
         leaf="transparent"
       />
 
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28 relative">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-28 pb-20 lg:pt-36 lg:pb-28 relative">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-14 items-center">
           {/* copy */}
           <div>

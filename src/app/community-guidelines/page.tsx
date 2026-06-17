@@ -21,7 +21,7 @@ const CommunityGuidelinesPage = () => (
   <LegalPageLayout
     title="Community Guidelines"
     intro="Drift is built on trust and respect. These guidelines keep it safe, inclusive, and focused on genuine growth."
-    lastUpdated="[Insert Date]"
+    lastUpdated="June 17, 2026"
     sections={sections}
   >
     <section id="overview">

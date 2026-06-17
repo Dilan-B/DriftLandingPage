@@ -2,6 +2,7 @@
 
 import {
   motion,
+  useReducedMotion,
   type Transition,
   type TargetAndTransition,
 } from "framer-motion";
@@ -72,7 +73,13 @@ const BlurText = ({
 }: BlurTextProps) => {
   const elements = animateBy === "words" ? text.split(" ") : text.split("");
   const [inView, setInView] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+
+  // Only apply the reduced-motion branch after mount so the server and first
+  // client render match (avoids a hydration mismatch from useReducedMotion).
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const el = ref.current;
@@ -129,6 +136,15 @@ const BlurText = ({
 
   const fromSnapshot = animationFrom ?? defaultFrom;
   const toSnapshots = animationTo ?? defaultTo;
+
+  // Reduced-motion: render the text plainly and fully visible, no animation.
+  if (mounted && reduce) {
+    return createElement(
+      as,
+      { className, style: { display: "flex", flexWrap: "wrap" } },
+      text
+    );
+  }
 
   const stepCount = toSnapshots.length + 1;
   const totalDuration = stepDuration * (stepCount - 1);

@@ -4,12 +4,14 @@
  * ------------------------------------------------------------------ */
 
 :root {
-  /* Surfaces — cream, never beige/brown */
-  --paper-warm: #f7f7f4;
-  --paper-card: #ffffff;
-  --paper-cream: #fbfbf9;
-  --paper-sand: #f1f2ee;
+  /* Surfaces — warm cream parchment, never beige/brown */
+  --paper-warm: #efede3;
+  --paper-card: #f7f4ea;
+  --paper-cream: #f2efe5;
+  --paper-sand: #e3dfd2;
   --paper-dash: rgba(26, 40, 32, 0.16);
+  --body-glow-a: rgba(250, 246, 238, 0.58);
+  --body-glow-b: rgba(138, 111, 88, 0.045);
 
   /* Text / ink */
   --ink-void: #0b1a11;
@@ -26,11 +28,11 @@
   --earn-sage-lo: #e4ece0;
   --earn-sage-dot: #5b8a6d;
   --earn-terra: #2d7a52;
-  --earn-terra-lo: #e8f0e5;
+  --earn-terra-lo: #dde8dc;
   --earn-green: #2d6b47;
   --earn-green-lo: #e4ece0;
   --earn-blue: #5a8fa4;
-  --earn-blue-lo: #e8eff1;
+  --earn-blue-lo: #dfe9eb;
 
   /* Warm earth — graphic accents only */
   --clay: #b0764e;
@@ -43,11 +45,11 @@
   --cta-bg-hi: #2a4d38;
   --cta-text: #faf6ee;
 
-  /* Elevation — barely-there */
-  --shadow-soft: 0 1px 2px rgba(11, 26, 17, 0.04),
-    0 14px 34px rgba(11, 26, 17, 0.06);
-  --shadow-lift: 0 2px 6px rgba(11, 26, 17, 0.06),
-    0 24px 50px rgba(11, 26, 17, 0.1);
+  /* Elevation — soft but present */
+  --shadow-soft: 0 1px 2px rgba(11, 26, 17, 0.05),
+    0 12px 28px rgba(31, 58, 42, 0.09);
+  --shadow-lift: 0 2px 8px rgba(11, 26, 17, 0.08),
+    0 28px 56px rgba(31, 58, 42, 0.14);
 
   /* Fonts */
   --font-playfair: "Playfair Display", Georgia, serif;
@@ -63,6 +65,8 @@
   --paper-cream: #141b15;
   --paper-sand: #19231c;
   --paper-dash: rgba(232, 238, 223, 0.16);
+  --body-glow-a: rgba(31, 58, 42, 0.22);
+  --body-glow-b: rgba(127, 190, 150, 0.06);
 
   --ink-void: #f3f7ec;
   --ink-deep: #e8eedf;

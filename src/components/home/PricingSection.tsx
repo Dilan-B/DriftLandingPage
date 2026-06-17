@@ -2,6 +2,7 @@ import Link from "next/link";
 import Kicker from "@/components/ui/Kicker";
 import BlurText from "@/components/ui/BlurText";
 import Button from "@/components/ui/Button";
+import TiltCard from "@/components/ui/TiltCard";
 
 const PricingSection = () => {
   const free = [
@@ -19,8 +20,11 @@ const PricingSection = () => {
   ];
 
   return (
-    <section id="pricing" className="scroll-mt-20">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-24">
+    <section
+      id="pricing"
+      className="dot-transition-panel dot-transition-panel-below scroll-mt-20"
+    >
+      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 py-24">
         <div className="max-w-2xl">
           <Kicker>Pricing</Kicker>
           <BlurText
@@ -36,7 +40,7 @@ const PricingSection = () => {
           </p>
         </div>
 
-        <div className="mt-14 grid md:grid-cols-2 gap-6 max-w-4xl">
+        <div className="mobile-card-rail mt-14 md:grid md:grid-cols-2 md:gap-6 max-w-4xl">
           {/* Free */}
           <div className="rounded-card bg-paper-card border border-line shadow-soft p-8 flex flex-col">
             <h3 className="font-display text-2xl text-ink-deep">Free</h3>
@@ -62,8 +66,9 @@ const PricingSection = () => {
             </Button>
           </div>
 
-          {/* Pro — highlighted deep green */}
-          <div className="relative rounded-card bg-earn-deep text-cta-text shadow-lift p-8 flex flex-col overflow-hidden">
+          {/* Pro — highlighted deep green, with tactile 3D tilt */}
+          <TiltCard radius={18} glowColor="rgba(127, 190, 150, 0.55)">
+          <div className="relative h-full rounded-card bg-earn-deep text-cta-text shadow-lift p-8 flex flex-col overflow-hidden">
             <div className="absolute right-5 top-5">
               <span className="inline-flex items-center rounded-full bg-cta-text/15 px-3 py-1.5 font-kicker uppercase tracking-[0.14em] text-[10px] text-cta-text">
                 Most popular
@@ -89,6 +94,7 @@ const PricingSection = () => {
               Get early access to Pro
             </Link>
           </div>
+          </TiltCard>
         </div>
         <p className="mt-6 text-sm text-ink-faint max-w-4xl">
           * Placeholder pricing and feature split — edit before launch.

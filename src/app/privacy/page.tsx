@@ -26,7 +26,7 @@ const PrivacyPage = () => (
   <LegalPageLayout
     title="Privacy Policy"
     intro="We've kept this short and human-readable. Here's exactly what Drift collects and why."
-    lastUpdated="[Insert Date]"
+    lastUpdated="June 17, 2026"
     sections={sections}
   >
     <section id="overview">

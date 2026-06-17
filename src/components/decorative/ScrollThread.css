@@ -14,40 +14,54 @@
   height: 100%;
 }
 
-/* glowing seed that rides the tip of the drawn vine */
-.scroll-thread-tip {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 16px;
-  height: 16px;
-  margin: -8px 0 0 -8px;
-  border-radius: 9999px;
-  background: radial-gradient(
-    circle,
-    var(--earn-terra) 0%,
-    rgba(45, 122, 82, 0.55) 35%,
-    rgba(45, 122, 82, 0) 72%
-  );
-  box-shadow: 0 0 14px 4px rgba(45, 122, 82, 0.45);
-  pointer-events: none;
-  z-index: 45;
-  transition: opacity 0.5s ease;
-  will-change: transform, opacity;
+.thread-track {
+  stroke: var(--earn-sage);
+  stroke-opacity: 0.2;
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 
-.dark .scroll-thread-tip {
-  background: radial-gradient(
-    circle,
-    #b8e986 0%,
-    rgba(127, 190, 150, 0.5) 35%,
-    rgba(127, 190, 150, 0) 72%
-  );
-  box-shadow: 0 0 16px 5px rgba(127, 190, 150, 0.4);
+.thread-draw {
+  stroke: url(#thread-grad);
+  stroke-width: 3.6;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(45, 122, 82, 0.4));
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .scroll-thread-tip {
-    display: none;
+.dark .thread-draw {
+  filter: drop-shadow(0 0 6px rgba(127, 190, 150, 0.5));
+}
+
+.scroll-thread-ball {
+  filter: drop-shadow(0 0 9px rgba(45, 122, 82, 0.6));
+  transition: opacity 0.2s ease;
+}
+
+.thread-ball-halo {
+  opacity: 0.95;
+}
+
+.thread-ball-core {
+  stroke: var(--earn-deep);
+  stroke-opacity: 0.34;
+  stroke-width: 1.4;
+}
+
+.dark .scroll-thread-ball {
+  filter: drop-shadow(0 0 11px rgba(127, 190, 150, 0.55));
+}
+
+@media (max-width: 768px) {
+  .thread-track {
+    stroke-opacity: 0.14;
+    stroke-width: 1.4;
+  }
+
+  .thread-draw {
+    stroke-width: 2.4;
+  }
+
+  .scroll-thread-ball {
+    filter: drop-shadow(0 0 7px rgba(45, 122, 82, 0.45));
   }
 }

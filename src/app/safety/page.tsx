@@ -18,7 +18,7 @@ const SafetyPage = () => (
   <LegalPageLayout
     title="Safety & AI Verification"
     intro="A plain explanation of how AI helps verify tasks — and where its limits are."
-    lastUpdated="[Insert Date]"
+    lastUpdated="June 17, 2026"
     sections={sections}
   >
     <section id="how-ai-works">

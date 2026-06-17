@@ -25,7 +25,7 @@ const TermsPage = () => (
   <LegalPageLayout
     title="Terms of Service"
     intro="Plain-language terms for using Drift. Please read them before joining."
-    lastUpdated="[Insert Date]"
+    lastUpdated="June 17, 2026"
     sections={sections}
   >
     <section id="acceptance">

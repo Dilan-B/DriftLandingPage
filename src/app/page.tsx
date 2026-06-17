@@ -35,12 +35,10 @@ export default function Home() {
       <ScrollSection>
         <FeaturesSection />
       </ScrollSection>
-      <ScrollSection>
-        <GrowthLadderSection />
-      </ScrollSection>
-      <ScrollSection>
-        <PricingSection />
-      </ScrollSection>
+      {/* Not wrapped in ScrollSection: it pins/sticks, and a transformed
+          ancestor would break position: sticky. */}
+      <GrowthLadderSection />
+      <PricingSection />
       <ScrollSection>
         <FAQSection />
       </ScrollSection>

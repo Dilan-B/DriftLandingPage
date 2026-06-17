@@ -40,7 +40,7 @@ const HowItWorksSection = () => {
           />
         </div>
 
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+        <div className="mobile-card-rail mt-14 md:grid md:grid-cols-3 md:gap-6">
           {steps.map((step, i) => (
             <Reveal
               key={step.n}

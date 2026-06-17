@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Drift Landing Page
 
 A production-ready landing page for Drift, a screen-time reduction app. This site is pure marketing, legal documentation, and support—no authentication or account management.
@@ -90,7 +89,7 @@ NEXT_PUBLIC_APP_STORE_URL=https://apps.apple.com/...
 Search and replace these placeholders throughout the site:
 
 - `[Insert App Store Link]` → Actual App Store URL
-- `[Insert Date]` → Effective date for legal pages
+- `June 17, 2026` → Effective date for legal pages
 - `driftappcontact@gmail.com` → Your support email
 - `G-XXXXXXXXXX` → Google Analytics ID
 
@@ -110,8 +109,8 @@ Update the GA ID in `src/app/layout.tsx` with your actual Google Analytics 4 pro
 ### 5. Social Links
 
 Update social media URLs in `src/components/shared/Footer.tsx`:
-- Instagram: `https://instagram.com/joindrift`
-- TikTok: `https://tiktok.com/@joindrift`
+- Instagram: `https://www.instagram.com/drift.productivity`
+- TikTok: `https://www.tiktok.com/@drift_productivity`
 
 ## Project Structure
 
@@ -293,6 +292,3 @@ npx tsc --noEmit
 ## Support
 
 For questions about the landing page, contact driftappcontact@gmail.com
-=======
-# DriftLandingPage
->>>>>>> 830aa3584093dda88cdf1230fe42778fbc50609a

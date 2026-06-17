@@ -70,6 +70,7 @@ const DotField = memo(
       prevX: -9999,
       prevY: -9999,
       speed: 0,
+      inside: false,
     });
     const rafRef = useRef<number>(0);
     const sizeRef = useRef({ w: 0, h: 0, offsetX: 0, offsetY: 0 });
@@ -143,6 +144,20 @@ const DotField = memo(
         buildDots(w, h);
       }
 
+      function resolveCanvasColor(value: string) {
+        const trimmed = value.trim();
+        if (!trimmed.startsWith("var(")) return trimmed;
+
+        const match = trimmed.match(/^var\((--[^,\s)]+)(?:,\s*([^)]+))?\)$/);
+        if (!match) return trimmed;
+
+        const target = canvasRef.current;
+        if (!target) return match[2]?.trim() || trimmed;
+
+        const cssValue = getComputedStyle(target).getPropertyValue(match[1]).trim();
+        return cssValue || match[2]?.trim() || trimmed;
+      }
+
       function buildDots(w: number, h: number) {
         const p = propsRef.current;
         const step = p.dotRadius + p.dotSpacing;
@@ -163,10 +178,23 @@ const DotField = memo(
         dotsRef.current = dots;
       }
 
-      function onMouseMove(e: MouseEvent) {
+      function setPointer(pageX: number, pageY: number) {
         const s = sizeRef.current;
-        mouseRef.current.x = e.pageX - s.offsetX;
-        mouseRef.current.y = e.pageY - s.offsetY;
+        const x = pageX - s.offsetX;
+        const y = pageY - s.offsetY;
+        mouseRef.current.x = x;
+        mouseRef.current.y = y;
+        mouseRef.current.inside = x >= 0 && y >= 0 && x <= s.w && y <= s.h;
+      }
+
+      function onPointerMove(e: PointerEvent) {
+        setPointer(e.pageX, e.pageY);
+      }
+
+      function onTouchMove(e: TouchEvent) {
+        const touch = e.touches[0];
+        if (!touch) return;
+        setPointer(touch.pageX, touch.pageY);
       }
 
       function updateMouseSpeed() {
@@ -180,7 +208,7 @@ const DotField = memo(
         m.prevY = m.y;
       }
 
-      const speedInterval = setInterval(updateMouseSpeed, 20);
+      let speedInterval: ReturnType<typeof setInterval> | undefined;
 
       let frameCount = 0;
 
@@ -194,7 +222,7 @@ const DotField = memo(
         const len = dots.length;
         const t = frameCount * 0.02;
 
-        const targetEngagement = Math.min(m.speed / 5, 1);
+        const targetEngagement = m.inside ? Math.max(0.28, Math.min(m.speed / 5, 1)) : 0;
         engagement.current += (targetEngagement - engagement.current) * 0.06;
         if (engagement.current < 0.001) engagement.current = 0;
         const eng = engagement.current;
@@ -210,8 +238,8 @@ const DotField = memo(
         ctx.clearRect(0, 0, w, h);
 
         const grad = ctx.createLinearGradient(0, 0, w, h);
-        grad.addColorStop(0, p.gradientFrom);
-        grad.addColorStop(1, p.gradientTo);
+        grad.addColorStop(0, resolveCanvasColor(p.gradientFrom));
+        grad.addColorStop(1, resolveCanvasColor(p.gradientTo));
         ctx.fillStyle = grad;
 
         const cr = p.cursorRadius;
@@ -284,7 +312,9 @@ const DotField = memo(
 
       doResize();
       window.addEventListener("resize", resize);
-      window.addEventListener("mousemove", onMouseMove, { passive: true });
+      window.addEventListener("pointermove", onPointerMove, { passive: true });
+      window.addEventListener("touchmove", onTouchMove, { passive: true });
+      speedInterval = setInterval(updateMouseSpeed, 20);
       rafRef.current = requestAnimationFrame(tick);
 
       rebuildRef.current = () => {
@@ -297,7 +327,8 @@ const DotField = memo(
         clearInterval(speedInterval);
         clearTimeout(resizeTimer);
         window.removeEventListener("resize", resize);
-        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("pointermove", onPointerMove);
+        window.removeEventListener("touchmove", onTouchMove);
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

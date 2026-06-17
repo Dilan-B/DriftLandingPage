@@ -39,8 +39,11 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="scroll-mt-20">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-24">
+    <section
+      id="features"
+      className="dot-transition-panel dot-transition-panel-above scroll-mt-20"
+    >
+      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 py-24">
         <div className="max-w-2xl">
           <Kicker>What's inside</Kicker>
           <h2 className="mt-5 font-display text-4xl sm:text-5xl leading-tight text-ink-deep">
@@ -52,7 +55,7 @@ const FeaturesSection = () => {
           </p>
         </div>
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="feature-card-rail mt-14 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
           {features.map((f, i) => (
             <Reveal
               key={f.title}

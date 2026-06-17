@@ -14,3 +14,10 @@ export const contactFormSchema = z.object({
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
+
+export const waitlistSchema = z.object({
+  email: z.string().email("Please enter a valid email address"),
+  source: z.string().max(100).optional(),
+});
+
+export type WaitlistFormData = z.infer<typeof waitlistSchema>;

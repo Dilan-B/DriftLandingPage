@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { playfairDisplay, oswald, dmSans, orbitron } from "@/lib/fonts";
 import "@/styles/globals.css";
-import Navbar from "@/components/shared/Navbar";
+import CardNav from "@/components/shared/CardNav";
 import Footer from "@/components/shared/Footer";
 import MotionProvider from "@/components/shared/MotionProvider";
 import ScrollThread from "@/components/decorative/ScrollThread";
@@ -79,7 +79,7 @@ export default function RootLayout({
       <body>
         <MotionProvider>
           <ScrollThread />
-          <Navbar />
+          <CardNav />
           <main>{children}</main>
           <Footer />
         </MotionProvider>

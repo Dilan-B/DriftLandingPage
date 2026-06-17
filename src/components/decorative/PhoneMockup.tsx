@@ -1,4 +1,5 @@
 import GrowthIcon from "@/components/decorative/GrowthIcon";
+import TiltCard from "@/components/ui/TiltCard";
 
 /**
  * A soft rounded device frame showing a stylized Drift app screen.
@@ -6,9 +7,16 @@ import GrowthIcon from "@/components/decorative/GrowthIcon";
  */
 const PhoneMockup = () => {
   return (
-    <div className="relative mx-auto w-[270px] sm:w-[300px]">
-      {/* device frame */}
-      <div className="relative rounded-[44px] bg-ink-deep p-3 shadow-lift">
+    <TiltCard
+      className="mx-auto w-[270px] sm:w-[300px]"
+      radius={44}
+      glowColor="rgba(127, 190, 150, 0.45)"
+      maxTilt={7}
+      featured
+    >
+      <div className="relative">
+        {/* device frame */}
+        <div className="relative rounded-[44px] bg-ink-deep p-3 shadow-lift">
         <div className="rounded-[34px] overflow-hidden bg-paper-warm">
           {/* notch */}
           <div className="relative h-7 bg-paper-warm">
@@ -71,14 +79,14 @@ const PhoneMockup = () => {
                   Locked
                 </span>
               </div>
-              <div className="mt-3 flex gap-2">
+              <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {["bg-cat-social", "bg-cat-work", "bg-cat-life"].map((c, i) => (
                   <div
                     key={i}
-                    className={`h-9 w-9 rounded-[12px] ${c} opacity-90`}
+                    className={`h-9 w-9 shrink-0 rounded-[12px] ${c} opacity-90`}
                   />
                 ))}
-                <div className="h-9 w-9 rounded-[12px] bg-paper-sand grid place-items-center text-ink-faint text-[11px]">
+                <div className="h-9 w-9 shrink-0 rounded-[12px] bg-paper-sand grid place-items-center text-ink-faint text-[11px]">
                   +6
                 </div>
               </div>
@@ -91,7 +99,8 @@ const PhoneMockup = () => {
       <div className="absolute -right-6 -top-6 h-20 w-20 rounded-card bg-paper-card border border-line shadow-soft grid place-items-center rotate-6">
         <GrowthIcon stage={3} className="h-12 w-12" />
       </div>
-    </div>
+      </div>
+    </TiltCard>
   );
 };
 
