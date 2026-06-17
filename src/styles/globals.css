@@ -1,0 +1,125 @@
+@import url("./theme.css");
+@import url("./animations.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--paper-warm);
+  color: var(--ink-deep);
+  font-family: var(--font-dm-sans);
+  line-height: 1.5;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background-color: var(--earn-sage-lo);
+  color: var(--ink-deep);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper-sand);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 999px;
+  border: 2px solid var(--paper-sand);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-mid);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--earn-deep);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Paper grain — adds a faint tactile texture to the cream canvas */
+.paper-grain {
+  position: relative;
+}
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------------ *
+ * Legal / long-form content — styled once, semantic HTML in the page
+ * ------------------------------------------------------------------ */
+.legal-content section {
+  scroll-margin-top: 96px;
+}
+.legal-content h2 {
+  font-family: var(--font-playfair);
+  font-weight: 500;
+  font-size: 1.65rem;
+  line-height: 1.25;
+  color: var(--ink-deep);
+  margin-top: 2.75rem;
+  margin-bottom: 0.85rem;
+}
+.legal-content section:first-child h2 {
+  margin-top: 0;
+}
+.legal-content p {
+  color: var(--ink-mid);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.legal-content ul {
+  list-style: disc;
+  padding-left: 1.35rem;
+  margin-bottom: 1.25rem;
+  color: var(--ink-mid);
+}
+.legal-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.65;
+}
+.legal-content strong {
+  color: var(--ink-deep);
+  font-weight: 600;
+}
+.legal-content a {
+  color: var(--earn-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  font-weight: 500;
+}
+.legal-content a:hover {
+  color: var(--earn-deep-hi);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

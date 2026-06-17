@@ -1,0 +1,52 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drawStroke {
+  from {
+    stroke-dashoffset: var(--len, 200);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Staggered reveal helpers for hero / section entrances */
+.reveal {
+  opacity: 0;
+  animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.reveal-1 {
+  animation-delay: 0.05s;
+}
+.reveal-2 {
+  animation-delay: 0.15s;
+}
+.reveal-3 {
+  animation-delay: 0.25s;
+}
+.reveal-4 {
+  animation-delay: 0.35s;
+}
+.reveal-5 {
+  animation-delay: 0.45s;
+}
+.reveal-6 {
+  animation-delay: 0.55s;
+}

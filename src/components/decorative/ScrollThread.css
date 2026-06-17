@@ -1,0 +1,53 @@
+.scroll-thread {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scroll-thread svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* glowing seed that rides the tip of the drawn vine */
+.scroll-thread-tip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    var(--earn-terra) 0%,
+    rgba(45, 122, 82, 0.55) 35%,
+    rgba(45, 122, 82, 0) 72%
+  );
+  box-shadow: 0 0 14px 4px rgba(45, 122, 82, 0.45);
+  pointer-events: none;
+  z-index: 45;
+  transition: opacity 0.5s ease;
+  will-change: transform, opacity;
+}
+
+.dark .scroll-thread-tip {
+  background: radial-gradient(
+    circle,
+    #b8e986 0%,
+    rgba(127, 190, 150, 0.5) 35%,
+    rgba(127, 190, 150, 0) 72%
+  );
+  box-shadow: 0 0 16px 5px rgba(127, 190, 150, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-thread-tip {
+    display: none;
+  }
+}

@@ -1,0 +1,97 @@
+/* ------------------------------------------------------------------ *
+ * Drift design tokens — verbatim from the app's theme.js
+ * LIGHT is the primary site theme. DARK is an optional toggle.
+ * ------------------------------------------------------------------ */
+
+:root {
+  /* Surfaces — cream, never beige/brown */
+  --paper-warm: #f7f7f4;
+  --paper-card: #ffffff;
+  --paper-cream: #fbfbf9;
+  --paper-sand: #f1f2ee;
+  --paper-dash: rgba(26, 40, 32, 0.16);
+
+  /* Text / ink */
+  --ink-void: #0b1a11;
+  --ink-deep: #1a2820;
+  --ink-mid: #6b7a6e;
+  --ink-faint: #a8b0a8;
+  --ink-border: rgba(26, 40, 32, 0.08);
+  --ink-hairline: rgba(26, 40, 32, 0.06);
+
+  /* Brand greens */
+  --earn-deep: #1f3a2a;
+  --earn-deep-hi: #2a4d38;
+  --earn-sage: #3e6b4e;
+  --earn-sage-lo: #e4ece0;
+  --earn-sage-dot: #5b8a6d;
+  --earn-terra: #2d7a52;
+  --earn-terra-lo: #e8f0e5;
+  --earn-green: #2d6b47;
+  --earn-green-lo: #e4ece0;
+  --earn-blue: #5a8fa4;
+  --earn-blue-lo: #e8eff1;
+
+  /* Warm earth — graphic accents only */
+  --clay: #b0764e;
+  --clay-lo: #eee0cf;
+  --bark: #8a6f58;
+  --bark-lo: rgba(138, 111, 88, 0.1);
+
+  /* CTA pairing (deep forest button, off-white text) */
+  --cta-bg: #1f3a2a;
+  --cta-bg-hi: #2a4d38;
+  --cta-text: #faf6ee;
+
+  /* Elevation — barely-there */
+  --shadow-soft: 0 1px 2px rgba(11, 26, 17, 0.04),
+    0 14px 34px rgba(11, 26, 17, 0.06);
+  --shadow-lift: 0 2px 6px rgba(11, 26, 17, 0.06),
+    0 24px 50px rgba(11, 26, 17, 0.1);
+
+  /* Fonts */
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-dm-sans: "DM Sans", system-ui, sans-serif;
+  --font-oswald: "Oswald", sans-serif;
+  --font-orbitron: "Orbitron", sans-serif;
+}
+
+/* ---------------------------- DARK ---------------------------- */
+.dark {
+  --paper-warm: #0f1611;
+  --paper-card: #171f18;
+  --paper-cream: #141b15;
+  --paper-sand: #19231c;
+  --paper-dash: rgba(232, 238, 223, 0.16);
+
+  --ink-void: #f3f7ec;
+  --ink-deep: #e8eedf;
+  --ink-mid: #9dae9a;
+  --ink-faint: #566357;
+  --ink-border: rgba(255, 255, 255, 0.09);
+  --ink-hairline: rgba(255, 255, 255, 0.06);
+
+  --earn-deep: #d8e8c5;
+  --earn-deep-hi: #e4f0d0;
+  --earn-sage: #a8c99a;
+  --earn-sage-lo: #1e2a20;
+  --earn-sage-dot: #7fbe96;
+  --earn-terra: #7fbe96;
+  --earn-terra-lo: #1c2a20;
+  --earn-green: #7fbe96;
+  --earn-green-lo: #1c2a20;
+  --earn-blue: #9bc4d2;
+  --earn-blue-lo: #16242a;
+
+  --clay: #cca07e;
+  --clay-lo: rgba(204, 160, 126, 0.14);
+  --bark: #a38c78;
+  --bark-lo: rgba(163, 140, 120, 0.12);
+
+  --cta-bg: #d8e8c5;
+  --cta-bg-hi: #e4f0d0;
+  --cta-text: #0f1611;
+
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 34px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 2px 6px rgba(0, 0, 0, 0.35), 0 24px 50px rgba(0, 0, 0, 0.45);
+}
