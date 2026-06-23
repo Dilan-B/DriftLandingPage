@@ -8,7 +8,7 @@ import MotionProvider from "@/components/shared/MotionProvider";
 import ScrollThread from "@/components/decorative/ScrollThread";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://joindrift.app"),
+  metadataBase: new URL("https://driftproductivity.com"),
   title: {
     default: "Drift – Earn Your Screen Time",
     template: "%s · Drift",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://joindrift.app",
+    url: "https://driftproductivity.com",
     siteName: "Drift",
     title: "Drift – Earn Your Screen Time",
     description:

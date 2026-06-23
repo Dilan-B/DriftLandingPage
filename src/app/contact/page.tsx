@@ -33,10 +33,10 @@ const ContactPage = () => {
                 Email
               </p>
               <a
-                href="mailto:support@joindrift.app"
+                href="mailto:support@driftproductivity.com"
                 className="mt-2 block text-earn-deep font-medium hover:text-earn-deep-hi break-all"
               >
-                support@joindrift.app
+                support@driftproductivity.com
               </a>
             </div>
 

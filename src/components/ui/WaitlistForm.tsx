@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { cn } from "@/lib/cn";
 
+// To collect emails in-page on a static host, create a free Formspree form
+// and paste its endpoint here (e.g. "https://formspree.io/f/abcdwxyz").
+// Left empty, the form falls back to opening the visitor's email client.
+const FORMSPREE_ENDPOINT = "";
+
 interface WaitlistFormProps {
   className?: string;
   /** stack vertically (used in the closing CTA panel) */
@@ -25,22 +30,30 @@ const WaitlistForm = ({ className, stacked = false }: WaitlistFormProps) => {
     }
 
     setStatus("loading");
-    const response = await fetch("/api/waitlist", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: trimmedEmail,
-        source: "homepage-waitlist",
-      }),
-    });
 
-    if (!response.ok) {
-      const data = (await response.json().catch(() => null)) as {
-        code?: string;
-      } | null;
-      console.error("Waitlist submission failed", data?.code || response.status);
+    try {
+      if (FORMSPREE_ENDPOINT) {
+        const response = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            email: trimmedEmail,
+            source: "homepage-waitlist",
+          }),
+        });
+        if (!response.ok) {
+          setStatus("submitError");
+          return;
+        }
+      } else {
+        // No backend configured — open the email client as a graceful fallback.
+        const subject = encodeURIComponent("Drift early access");
+        const body = encodeURIComponent(
+          `Please add me to the Drift waitlist: ${trimmedEmail}`
+        );
+        window.location.href = `mailto:driftappcontact@gmail.com?subject=${subject}&body=${body}`;
+      }
+    } catch {
       setStatus("submitError");
       return;
     }

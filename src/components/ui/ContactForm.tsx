@@ -53,20 +53,20 @@ const ContactForm = () => {
       return;
     }
 
+    // Static-hosting friendly: open the visitor's email client with the
+    // message prefilled. No backend required. (Swap for Formspree later if
+    // you want in-page submission.)
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setTimeout(() => setSubmitStatus("idle"), 6000);
-      } else {
-        setSubmitStatus("error");
-      }
+      const subject = encodeURIComponent(
+        `[Drift] ${formData.subject} — from ${formData.name}`
+      );
+      const body = encodeURIComponent(
+        `${formData.message}\n\n— ${formData.name} (${formData.email})`
+      );
+      window.location.href = `mailto:driftappcontact@gmail.com?subject=${subject}&body=${body}`;
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSubmitStatus("idle"), 6000);
     } catch (error) {
       console.error("Form submission error:", error);
       setSubmitStatus("error");

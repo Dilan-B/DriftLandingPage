@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: "Drift – Stop Mindless Scrolling",
     description:
       "Trade tasks for screen time. Replace mindless scrolling with real things to do.",
-    url: "https://joindrift.app",
+    url: "https://driftproductivity.com",
   },
 };
 
