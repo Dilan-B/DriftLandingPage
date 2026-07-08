@@ -6,37 +6,37 @@ const FAQSection = () => {
     {
       question: "What is Drift?",
       answer:
-        "Drift is an iOS app that helps you scroll less by making screen time something you earn. You block the apps that distract you, then complete real-world tasks to unlock minutes. It's gentle accountability — encouraging, never shaming.",
+        "Drift is an iPhone app that blocks distracting apps until you complete tasks you choose.",
     },
     {
-      question: "Does Drift block apps?",
+      question: "Does Drift really block apps?",
       answer:
-        "Yes. Drift uses Apple's Screen Time shield to block the apps you choose. They stay locked until you've earned time by completing tasks, and the shield returns when your earned time runs out.",
+        "Yes. Drift uses Apple's Screen Time shield, so blocked apps stay locked at the system level.",
     },
     {
       question: "How does task verification work?",
       answer:
-        "When you finish a task you mark it complete or submit a quick bit of proof. Drift may use AI to help review submissions and give feedback. AI isn't perfect — you can always appeal a decision through support.",
+        "You mark tasks complete or submit quick proof when a task needs it. If something is reviewed incorrectly, you can appeal it.",
     },
     {
       question: "What data does Drift collect?",
       answer:
-        "Only what's needed to run the app: your account info, task activity, and any proof you choose to submit. We don't sell your data. Full details live in our Privacy Policy.",
+        "Drift stores the information needed to run your account, tasks, earned time, and proof you choose to submit. We do not sell your data.",
     },
     {
       question: "How do I manage my account?",
       answer:
-        "Account settings, data controls, and account deletion are handled directly inside the Drift app through Settings. This website does not require a login.",
+        "Account settings, data controls, and deletion live inside the Drift app. This website does not have a login.",
     },
     {
-      question: "Is Drift for students?",
+      question: "Who is Drift for?",
       answer:
-        "Drift works for anyone who wants a calmer relationship with their phone — students, professionals, parents. The task system adapts to whatever your day looks like.",
+        "Anyone who keeps opening the same apps without meaning to: students, professionals, parents, or anyone trying to get a cleaner break from scrolling.",
     },
     {
       question: "Is Drift free?",
       answer:
-        "There's a free plan with the core blocking and earn-to-unlock features. Pro adds recurring tasks, blocked hours, and deeper insights. You can join the beta for free today.",
+        "Yes. Drift is free right now, and every feature is included — blocking, earned time, routines, blocked hours, and stats.",
     },
   ];
 
@@ -46,7 +46,7 @@ const FAQSection = () => {
         <div className="text-center">
           <Kicker className="justify-center">Questions</Kicker>
           <h2 className="mt-5 font-display text-4xl sm:text-5xl leading-tight text-ink-deep">
-            Good to know.
+            The short version.
           </h2>
         </div>
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Kicker from "@/components/ui/Kicker";
 import FAQItem from "@/components/ui/FAQItem";
 import ContactForm from "@/components/ui/ContactForm";
+import { APP_STORE_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "Support & FAQ",
@@ -17,7 +18,7 @@ const categories = [
       {
         question: "How do I download Drift?",
         answer:
-          "Drift is available on the iOS App Store. Join the early-access waitlist on our home page and we'll send your invite.",
+          "Drift is available now on the iOS App Store. Download it from the App Store and create your account inside the app.",
       },
       {
         question: "Do I need an account?",
@@ -97,7 +98,7 @@ const categories = [
       {
         question: "Is Drift free?",
         answer:
-          "There's a free plan with core features, plus a Pro plan with recurring tasks, blocked hours, and deeper insights.",
+          "Yes. Drift is free right now, and every feature is included — blocking, earned time, routines, blocked hours, and deeper insights.",
       },
       {
         question: "Does Drift work on Android?",
@@ -147,6 +148,16 @@ const SupportPage = () => {
             <strong className="text-ink-deep font-medium">Note:</strong> account
             settings and deletion are handled inside the Drift app.
           </p>
+          <div className="mt-7">
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-btn bg-cta-bg px-6 py-3 text-[15px] font-medium text-cta-text shadow-soft transition-all hover:-translate-y-[1px] hover:bg-cta-bg-hi active:scale-[0.98]"
+            >
+              Download Drift
+            </a>
+          </div>
         </div>
       </header>
 

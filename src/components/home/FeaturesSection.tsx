@@ -1,40 +1,37 @@
 import Kicker from "@/components/ui/Kicker";
-import Badge from "@/components/ui/Badge";
 import Reveal from "@/components/ui/Reveal";
 
 const FeaturesSection = () => {
   const features = [
     {
-      title: "iOS Screen Time blocking",
-      body: "Native shield on the apps you choose. Reliable, system-level, and impossible to swipe away.",
+      title: "Real iOS blocking",
+      body: "Drift uses Screen Time, not a fake overlay. The apps you pick stay behind the shield.",
       icon: "shield",
     },
     {
-      title: "Earn-to-unlock",
-      body: "Time isn't given — it's earned. Every task you finish converts into minutes you can spend.",
+      title: "Minutes you earn",
+      body: "Finish a task, get time back. Open the app, spend the balance.",
       icon: "coin",
     },
     {
-      title: "Difficulty tiers",
-      body: "Quick wins or deeper efforts. Harder tasks earn more time, so the reward fits the work.",
+      title: "Task difficulty",
+      body: "A ten-minute walk and a deep-clean session should not pay the same. Drift lets you weight the work.",
       icon: "tiers",
     },
     {
-      title: "Live countdown",
-      body: "A clear timer shows your balance draining only while a blocked app is open. Always honest.",
+      title: "Live balance",
+      body: "Your timer only drains while a blocked app is open, so the number always means something.",
       icon: "clock",
     },
     {
-      title: "Recurring tasks",
-      body: "Build routines that repeat daily or weekly, so good habits run on rails.",
+      title: "Repeating routines",
+      body: "Set chores, workouts, reading, or bedtime resets once. Drift brings them back on schedule.",
       icon: "repeat",
-      pro: true,
     },
     {
-      title: "Blocked hours",
-      body: "Set windows — bedtime, deep work — where apps stay shielded no matter what you've earned.",
+      title: "Protected hours",
+      body: "Keep bedtime, school, or deep work locked even if you have minutes saved up.",
       icon: "moon",
-      pro: true,
     },
   ];
 
@@ -45,13 +42,13 @@ const FeaturesSection = () => {
     >
       <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 py-24">
         <div className="max-w-2xl">
-          <Kicker>What's inside</Kicker>
+          <Kicker>Inside Drift</Kicker>
           <h2 className="mt-5 font-display text-4xl sm:text-5xl leading-tight text-ink-deep">
-            Everything earns its place.
+            Built for the moment you reach for your phone.
           </h2>
           <p className="mt-5 text-lg text-ink-mid leading-relaxed">
-            No dashboards to babysit, no streak-shaming. Just the few tools that
-            actually move the needle.
+            No giant dashboard. No guilt loop. Just blocks, tasks, minutes, and
+            a clear reason to put the phone down first.
           </p>
         </div>
 
@@ -66,11 +63,6 @@ const FeaturesSection = () => {
                 <span className="grid place-items-center h-11 w-11 rounded-[14px] bg-earn-sage-lo text-earn-sage">
                   <FeatureIcon name={f.icon} />
                 </span>
-                {f.pro && (
-                  <Badge variant="terra" kicker>
-                    Pro
-                  </Badge>
-                )}
               </div>
               <h3 className="mt-5 font-display text-xl text-ink-deep">
                 {f.title}
