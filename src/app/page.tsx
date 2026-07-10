@@ -1,3 +1,4 @@
+// test comment to verify git push access
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
