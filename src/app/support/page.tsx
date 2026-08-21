@@ -96,9 +96,9 @@ const categories = [
     icon: "info",
     items: [
       {
-        question: "Is Drift free?",
+        question: "How much does Drift cost?",
         answer:
-          "Yes. Drift is free right now, and every feature is included — blocking, earned time, routines, blocked hours, and deeper insights.",
+          "Drift is $0.99 a month. There's no free tier — every feature is included in the one plan: blocking, earned time, routines, blocked hours, and deeper insights.",
       },
       {
         question: "Is Drift used in research?",

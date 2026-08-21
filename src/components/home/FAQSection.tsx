@@ -34,9 +34,9 @@ const FAQSection = () => {
         "Anyone who keeps opening the same apps without meaning to: students, professionals, parents, or anyone trying to get a cleaner break from scrolling.",
     },
     {
-      question: "Is Drift free?",
+      question: "How much does Drift cost?",
       answer:
-        "Yes. Drift is free right now, and every feature is included — blocking, earned time, routines, blocked hours, and stats.",
+        "Drift is $0.99 a month. There's no free tier — every feature is included in the one plan: blocking, earned time, routines, blocked hours, and stats.",
     },
     {
       question: "Is Drift used in research?",

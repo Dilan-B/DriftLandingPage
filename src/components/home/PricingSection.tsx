@@ -4,8 +4,7 @@ import TiltCard from "@/components/ui/TiltCard";
 import { APP_STORE_URL } from "@/lib/links";
 
 const PricingSection = () => {
-  // Every feature is currently included for free. Payments will return later —
-  // when they do, split this list back into free/pro tiers.
+  // Single paid plan — every feature for $0.99/month, no free tier.
   const included = [
     "Block apps with iOS Screen Time",
     "Earn time with everyday tasks",
@@ -26,15 +25,15 @@ const PricingSection = () => {
           <Kicker>Pricing</Kicker>
           <BlurText
             as="h2"
-            text="Everything Drift does. Free."
+            text="One plan. 99 cents a month."
             animateBy="words"
             direction="top"
             delay={90}
             className="mt-5 font-display text-4xl sm:text-5xl leading-tight text-ink-deep"
           />
           <p className="mt-5 text-lg text-ink-mid leading-relaxed">
-            No tiers, no paywalls. Every feature is included — download Drift and
-            start earning your time back today.
+            No free tier, no upsells. Every feature is included for one simple
+            price — less than a dollar a month.
           </p>
         </div>
 
@@ -46,11 +45,11 @@ const PricingSection = () => {
                   All included
                 </span>
               </div>
-              <h3 className="font-display text-2xl">Free</h3>
-              <p className="mt-1 text-cta-text/70">Everything, no strings.</p>
+              <h3 className="font-display text-2xl">Drift</h3>
+              <p className="mt-1 text-cta-text/70">Everything, one price.</p>
               <div className="mt-6 flex items-baseline gap-1">
-                <span className="font-display text-5xl">$0</span>
-                <span className="text-cta-text/70">/forever</span>
+                <span className="font-display text-5xl">$0.99</span>
+                <span className="text-cta-text/70">/month</span>
               </div>
               <ul className="mt-8 grid gap-3 sm:grid-cols-2">
                 {included.map((item) => (
