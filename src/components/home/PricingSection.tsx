@@ -37,12 +37,13 @@ const PricingSection = () => {
           </p>
         </div>
 
-        <div className="mt-14 max-w-3xl">
+        {/* Single premium plan — highlighted deep green, with tactile 3D tilt */}
+        <div className="mt-14 flex justify-center md:justify-start">
           <TiltCard radius={18} glowColor="rgba(127, 190, 150, 0.55)">
-            <div className="relative h-full rounded-card bg-earn-deep text-cta-text shadow-lift p-8 sm:p-10 flex flex-col overflow-hidden">
+            <div className="relative h-full w-full max-w-md rounded-card bg-earn-deep text-cta-text shadow-lift p-8 flex flex-col overflow-hidden">
               <div className="absolute right-5 top-5">
                 <span className="inline-flex items-center rounded-full bg-cta-text/15 px-3 py-1.5 font-kicker uppercase tracking-[0.14em] text-[10px] text-cta-text">
-                  All included
+                  Most popular
                 </span>
               </div>
               <h3 className="font-display text-2xl">Drift</h3>
@@ -51,7 +52,7 @@ const PricingSection = () => {
                 <span className="font-display text-5xl">$0.99</span>
                 <span className="text-cta-text/70">/month</span>
               </div>
-              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              <ul className="mt-7 space-y-3 flex-1">
                 {included.map((item) => (
                   <FeatureLine key={item}>{item}</FeatureLine>
                 ))}
@@ -60,7 +61,7 @@ const PricingSection = () => {
                 href={APP_STORE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-9 self-start rounded-btn bg-cta-text text-earn-deep font-medium px-6 py-3.5 text-[15px] text-center hover:-translate-y-[1px] active:scale-[0.98] transition-all"
+                className="mt-8 rounded-btn bg-cta-text text-earn-deep font-medium px-6 py-3.5 text-[15px] text-center hover:-translate-y-[1px] active:scale-[0.98] transition-all"
               >
                 Download Drift
               </a>
