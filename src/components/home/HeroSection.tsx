@@ -1,9 +1,10 @@
 import Kicker from "@/components/ui/Kicker";
 import BlurText from "@/components/ui/BlurText";
-import WaitlistForm from "@/components/ui/WaitlistForm";
+import Button from "@/components/ui/Button";
 import PhoneMockup from "@/components/decorative/PhoneMockup";
 import Sprout from "@/components/decorative/Sprout";
 import DotField from "@/components/decorative/DotField";
+import { APP_STORE_URL } from "@/lib/links";
 
 const HeroSection = () => {
   return (
@@ -41,34 +42,35 @@ const HeroSection = () => {
           {/* copy */}
           <div>
             <div className="reveal reveal-1">
-              <Kicker>Now in private beta</Kicker>
+              <Kicker>Now on the App Store</Kicker>
             </div>
             <h1 className="mt-5 font-display text-[2.75rem] sm:text-6xl leading-[1.04] text-ink-deep">
               <BlurText
                 as="span"
-                text="Earn your"
+                text="Make scrolling"
                 animateBy="words"
                 direction="top"
                 delay={130}
               />
               <BlurText
                 as="span"
-                text="screen time."
+                text="cost a little effort."
                 animateBy="words"
                 direction="top"
                 delay={130}
               />
             </h1>
             <p className="reveal reveal-3 mt-6 text-lg text-ink-mid leading-relaxed max-w-md">
-              Drift blocks the apps that pull you in, then hands the time back
-              only when you complete real tasks. Gentle accountability that
-              helps you grow — never shames you.
+              Pick the apps you keep opening by accident. Drift locks them
+              until you finish something you actually meant to do.
             </p>
 
             <div className="reveal reveal-4 mt-8 max-w-md relative">
-              <WaitlistForm />
+              <Button as="a" href={APP_STORE_URL} size="lg">
+                Download on the App Store
+              </Button>
               <p className="mt-3 text-sm text-ink-faint">
-                Free to join the beta. No spam, just your invite.
+                Available now for iPhone.
               </p>
             </div>
 
@@ -80,6 +82,30 @@ const HeroSection = () => {
               <span className="inline-flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-earn-blue" />
                 Android coming soon
+              </span>
+            </div>
+
+            <div className="reveal reveal-6 mt-8">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-paper-card/70 px-4 py-2 text-sm text-ink-mid shadow-soft">
+                <svg
+                  className="h-4 w-4 flex-shrink-0 text-earn-sage"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 3v6l-5 9a2 2 0 0 0 1.8 3h12.4A2 2 0 0 0 20 18l-5-9V3" />
+                  <path d="M8 3h8M7 14h10" />
+                </svg>
+                <span>
+                  The official tool in a{" "}
+                  <span className="text-ink-deep font-medium">
+                    Johns Hopkins
+                  </span>{" "}
+                  research study
+                </span>
               </span>
             </div>
           </div>

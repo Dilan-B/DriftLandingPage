@@ -101,6 +101,11 @@ const categories = [
           "Yes. Drift is free right now, and every feature is included — blocking, earned time, routines, blocked hours, and deeper insights.",
       },
       {
+        question: "Is Drift used in research?",
+        answer:
+          "Yes. A research team at Johns Hopkins uses Drift as the official tool in their study, offering it to their study participants.",
+      },
+      {
         question: "Does Drift work on Android?",
         answer:
           "Drift is iOS-first today (it relies on iOS Screen Time). Android support is on the roadmap.",
