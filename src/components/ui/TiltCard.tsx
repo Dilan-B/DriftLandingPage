@@ -36,8 +36,8 @@ const TiltCard = ({
     const card = cardRef.current;
     if (!wrap || !card) return;
 
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
+    // Tilt is intentionally always on (ignores prefers-reduced-motion) so the
+    // hero + pricing cards stay interactive for every visitor.
     if (!featured && window.matchMedia("(max-width: 768px)").matches) return;
 
     const restGlow = featured ? 0.6 : 0;

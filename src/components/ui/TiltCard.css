@@ -116,17 +116,5 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .tilt-card {
-    transform: none !important;
-    transition: none;
-  }
-  .tilt-wrap:not(.tilt-wrap-featured) .tilt-glow,
-  .tilt-wrap:not(.tilt-wrap-featured) .tilt-sheen {
-    display: none;
-  }
-
-  .tilt-wrap-featured .tilt-card::after {
-    animation: none;
-  }
-}
+/* Tilt deliberately stays active under prefers-reduced-motion — the cards are
+   a core part of the brand feel and are kept interactive for every visitor. */

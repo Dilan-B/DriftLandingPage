@@ -36,7 +36,7 @@ const FAQSection = () => {
     {
       question: "How much does Drift cost?",
       answer:
-        "Drift is $0.99 a month. There's no free tier — every feature is included in the one plan: blocking, earned time, routines, blocked hours, and stats.",
+        "Personal is $4.99/month or $29.99/year. Family — where a parent assigns tasks to their kids' devices and approves them to unlock screen time — runs $7.99/month for one child up to $19.99/month for five or more. There's no free tier.",
     },
     {
       question: "Is Drift used in research?",
