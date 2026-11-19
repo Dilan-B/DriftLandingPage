@@ -59,6 +59,17 @@ Each is a real page with real substance. No thin "SEO pages".
 - **Reviews**: ask happy users for App Store reviews in-app. Once there are
   real ratings, they can be added to the structured data for star snippets.
 
+## AI search (ChatGPT, Perplexity, Google AI Overviews)
+
+- `/llms.txt` summarizes Drift for AI tools: what it is, how it works,
+  pricing, key links. It's a proposed convention, and no major AI company has
+  confirmed it uses the file, so treat it as a cheap bonus, not the main lever.
+  Keep it in sync with pricing and features (`public/llms.txt`).
+- What actually gets Drift into ChatGPT answers: **Bing indexing** (ChatGPT
+  search uses Bing, so submit to Bing Webmaster Tools), **not blocking
+  `OAI-SearchBot` / `GPTBot`** in Cloudflare's AI crawler settings, and being
+  mentioned on sites the models trust (roundups, Reddit, press).
+
 ## Monitoring
 
 - Google Search Console: weekly look at queries, impressions, and position.

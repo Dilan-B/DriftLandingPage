@@ -1,0 +1,46 @@
+# Drift
+
+> Drift is an iPhone app blocker that locks distracting apps until you finish tasks you choose. You earn your screen time back by doing something first: a walk, reading, chores, a workout. It uses Apple's Screen Time shield, so blocked apps stay locked at the system level. Available now on the App Store for iPhone; Android is coming soon.
+
+Drift is made for anyone who keeps opening the same apps without meaning to: students, professionals, parents, and people trying to cut down on doomscrolling. A research team at Johns Hopkins uses Drift as the official tool in their study.
+
+## How it works
+
+1. **Block**: pick the apps you lose time to. Drift applies Apple's Screen Time shield to them.
+2. **Earn**: complete tasks you define (walk, read, tidy, stretch, call someone back) and you decide how many minutes each one earns. Tasks can be weighted, so a deep-clean session can earn more than a short walk.
+3. **Spend**: open a blocked app and your earned balance counts down only while it's open. When the balance runs out, the shield comes back.
+
+## Key features
+
+- System-level blocking through Apple Screen Time, not an overlay that can be dismissed
+- Earned-time balance that drains only while a blocked app is open
+- Weighted tasks and recurring tasks (chores, workouts, reading, bedtime resets)
+- Locked windows that stay blocked even with saved minutes (bedtime, school, deep work)
+- Task verification: mark tasks complete or submit quick proof; AI-reviewed proof can be appealed and appeals are reviewed manually
+- Family plan: a parent assigns tasks to their kids' devices and approves them before screen time unlocks
+
+## How Drift differs from Apple Screen Time limits
+
+Apple's built-in limits are easy to tap past ("Ignore Limit"). Drift uses the same system-level shield, but blocked apps unlock only after a task is completed, so screen time is earned instead of ignored.
+
+## Pricing
+
+- Personal: $4.99/month or $29.99/year
+- Family: $7.99/month for one child, up to $19.99/month for five or more children
+- There is no free tier.
+
+## Links
+
+- [Homepage](https://driftproductivity.com/): overview, how it works, features, pricing, FAQ
+- [Download on the App Store](https://apps.apple.com/us/app/drift-productivity/id6778215875)
+- [Support & FAQ](https://driftproductivity.com/support/): help with blocking, earning time, verification, Family plans, billing
+- [Safety & AI Verification](https://driftproductivity.com/safety/): how AI task verification works and its limits
+- [Privacy Policy](https://driftproductivity.com/privacy/): Drift stores only what the app needs and does not sell data
+- [Contact](https://driftproductivity.com/contact/): support@driftproductivity.com
+
+## Optional
+
+- [Terms of Service](https://driftproductivity.com/terms/)
+- [Community Guidelines](https://driftproductivity.com/community-guidelines/)
+- [Instagram](https://www.instagram.com/drift.productivity)
+- [TikTok](https://www.tiktok.com/@drift_productivity)
