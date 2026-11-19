@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import LegalPageLayout from "@/components/layouts/LegalPageLayout";
+import { pageMetadata } from "@/lib/pageMetadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Service",
-  description: "The terms that govern your use of Drift.",
-};
+  description:
+    "The terms that govern your use of Drift, the iPhone app that blocks distracting apps until you finish your tasks.",
+  path: "/terms",
+});
 
 const sections = [
   { id: "acceptance", title: "Acceptance of Terms" },

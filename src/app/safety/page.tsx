@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import LegalPageLayout from "@/components/layouts/LegalPageLayout";
+import { pageMetadata } from "@/lib/pageMetadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Safety & AI Verification",
-  description: "How Drift uses AI, its limits, and how to stay safe.",
-};
+  description:
+    "How Drift uses AI to verify completed tasks, the limits of that verification, how appeals work, and how to stay safe.",
+  path: "/safety",
+});
 
 const sections = [
   { id: "how-ai-works", title: "How It Works" },

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import LegalPageLayout from "@/components/layouts/LegalPageLayout";
+import { pageMetadata } from "@/lib/pageMetadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Community Guidelines",
-  description: "How we keep Drift respectful, safe, and honest.",
-};
+  description:
+    "How we keep Drift respectful, safe, and honest, including what proof you can submit and what is not allowed.",
+  path: "/community-guidelines",
+});
 
 const sections = [
   { id: "overview", title: "Overview" },

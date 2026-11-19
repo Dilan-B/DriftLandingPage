@@ -4,11 +4,14 @@ import Kicker from "@/components/ui/Kicker";
 import FAQItem from "@/components/ui/FAQItem";
 import ContactForm from "@/components/ui/ContactForm";
 import { APP_STORE_URL } from "@/lib/links";
+import { pageMetadata } from "@/lib/pageMetadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Support & FAQ",
-  description: "Get help with Drift and find answers to common questions.",
-};
+  description:
+    "Get help with Drift, the iPhone app blocker. Answers on blocking apps, earning screen time, task verification, Family plans, and billing.",
+  path: "/support",
+});
 
 const categories = [
   {

@@ -147,7 +147,12 @@ src/
 
 ## Deployment
 
-### Deploy to Vercel (Recommended)
+Production is **Cloudflare Pages** (static export: build `npm run build`,
+output `out`). Every push to `main` deploys. See
+[docs/cloudflare-migration.md](docs/cloudflare-migration.md) for the DNS/email
+setup and [docs/seo-plan.md](docs/seo-plan.md) for the SEO roadmap.
+
+### Deploy to Vercel (alternative)
 
 ```bash
 npm run build

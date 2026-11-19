@@ -1,47 +1,69 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { manrope, newsreader, oswald } from "@/lib/fonts";
 import "@/styles/globals.css";
 import CardNav from "@/components/shared/CardNav";
 import Footer from "@/components/shared/Footer";
 import MotionProvider from "@/components/shared/MotionProvider";
 import ScrollThread from "@/components/decorative/ScrollThread";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/lib/site";
+import { OG_IMAGES } from "@/lib/pageMetadata";
+import { organizationSchema, websiteSchema } from "@/lib/structuredData";
+
+const DEFAULT_TITLE = "Drift: App Blocker That Makes You Earn Screen Time";
+const DEFAULT_DESCRIPTION =
+  "Drift is an iPhone app blocker that locks distracting apps until you finish your tasks. Earn your screen time back and stop doomscrolling.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://driftproductivity.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Drift - Earn Your Screen Time",
-    template: "%s - Drift",
+    default: DEFAULT_TITLE,
+    template: "%s | Drift",
   },
-  description:
-    "Drift blocks distracting apps until you finish the tasks you meant to do first.",
+  description: DEFAULT_DESCRIPTION,
+  applicationName: "Drift",
   keywords: [
-    "screen time",
+    "Drift app",
+    "Drift productivity",
     "app blocker",
-    "digital wellbeing",
-    "productivity",
+    "app blocker for iPhone",
+    "earn screen time",
+    "reduce screen time",
+    "stop doomscrolling",
+    "screen time app",
+    "parental screen time",
     "focus app",
-    "iOS Screen Time",
   ],
-  authors: [{ name: "Drift" }],
+  authors: [{ name: "Drift", url: SITE_URL }],
   creator: "Drift",
   publisher: "Drift",
-  robots: "index, follow",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://driftproductivity.com",
+    url: SITE_URL,
     siteName: "Drift",
-    title: "Drift - Earn Your Screen Time",
-    description:
-      "Block distracting apps, earn minutes back, and keep your phone from running the day.",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: OG_IMAGES,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Drift - Earn Your Screen Time",
-    description:
-      "Block distracting apps, earn minutes back, and keep your phone from running the day.",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: ["/og-image.png"],
   },
+  itunes: { appId: "6778215875" },
 };
 
 export const viewport: Viewport = {
@@ -52,13 +74,6 @@ export const viewport: Viewport = {
 
 const themeScript = `
 (function(){try{var t=localStorage.getItem('drift-theme');var d=t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d){document.documentElement.classList.add('dark');}}catch(e){}})();
-`;
-
-const gaScript = `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-XXXXXXXXXX');
 `;
 
 export default function RootLayout({
@@ -83,13 +98,7 @@ export default function RootLayout({
           <Footer />
         </MotionProvider>
 
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-          strategy="afterInteractive"
-        />
-        <Script id="ga4" strategy="afterInteractive">
-          {gaScript}
-        </Script>
+        <JsonLd data={[organizationSchema, websiteSchema]} />
       </body>
     </html>
   );

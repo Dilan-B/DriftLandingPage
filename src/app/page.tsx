@@ -1,4 +1,3 @@
-// test comment to verify git push access
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
@@ -9,20 +8,33 @@ import PricingSection from "@/components/home/PricingSection";
 import FAQSection from "@/components/home/FAQSection";
 import CTASection from "@/components/home/CTASection";
 import ScrollSection from "@/components/ui/ScrollSection";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/lib/site";
+import { OG_IMAGES } from "@/lib/pageMetadata";
+import { appSchema, homeFaqSchema } from "@/lib/structuredData";
+
+const TITLE = "Drift: App Blocker That Makes You Earn Screen Time";
+const DESCRIPTION =
+  "Drift is an iPhone app blocker that locks distracting apps until you finish your tasks. Earn your screen time back, stop doomscrolling, and set family limits.";
 
 export const metadata: Metadata = {
-  title: "Drift - Stop Mindless Scrolling",
-  description: "Block distracting apps until you finish something first.",
+  // absolute: the homepage title already leads with the brand
+  title: { absolute: TITLE },
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Drift - Stop Mindless Scrolling",
-    description: "Block distracting apps until you finish something first.",
-    url: "https://driftproductivity.com",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    images: OG_IMAGES,
   },
+  twitter: { title: TITLE, description: DESCRIPTION, images: ["/og-image.png"] },
 };
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={[appSchema, homeFaqSchema]} />
       {/* Hero stays un-wrapped so it paints instantly above the fold */}
       <HeroSection />
       <ScrollSection>

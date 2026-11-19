@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Kicker from "@/components/ui/Kicker";
 import ContactForm from "@/components/ui/ContactForm";
+import { pageMetadata } from "@/lib/pageMetadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
-  description: "Get in touch with the Drift team.",
-};
+  description:
+    "Contact the Drift team with questions about the app, your account, Family plans, press, or research partnerships.",
+  path: "/contact",
+});
 
 const ContactPage = () => {
   return (

@@ -61,8 +61,9 @@ const HeroSection = () => {
               />
             </h1>
             <p className="reveal reveal-3 mt-6 text-lg text-ink-mid leading-relaxed max-w-md">
-              Pick the apps you keep opening by accident. Drift locks them
-              until you finish something you actually meant to do.
+              Drift is an app blocker for iPhone. Pick the apps you keep opening
+              by accident, and Drift locks them until you finish something you
+              actually meant to do.
             </p>
 
             <div className="reveal reveal-4 mt-8 max-w-md relative">
