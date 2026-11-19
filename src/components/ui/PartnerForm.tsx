@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   partnerFormSchema,
   PARTNER_TRACKS,
+  PARTNER_MESSAGE_MAX,
   type PartnerFormData,
 } from "@/lib/validation";
 import { CONTACT_INBOX } from "@/lib/links";
@@ -233,6 +234,7 @@ const PartnerForm = () => {
           onChange={handleChange}
           disabled={isSubmitting}
           rows={5}
+          maxLength={PARTNER_MESSAGE_MAX}
           className={`${inputClasses} resize-none`}
           placeholder="Tell us a bit about your audience or needs…"
           aria-invalid={errors.message ? true : undefined}
@@ -252,9 +254,13 @@ const PartnerForm = () => {
           )}
           <p
             id="partner-message-count"
-            className="text-ink-faint text-sm mt-1.5 shrink-0"
+            className={`text-sm mt-1.5 shrink-0 ${
+              formData.message.length > PARTNER_MESSAGE_MAX
+                ? "text-clay"
+                : "text-ink-faint"
+            }`}
           >
-            {formData.message.length}/1500
+            {formData.message.length}/{PARTNER_MESSAGE_MAX}
           </p>
         </div>
       </div>

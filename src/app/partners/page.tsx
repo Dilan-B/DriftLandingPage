@@ -17,7 +17,7 @@ const tracks = [
     badgeClass: "bg-earn-sage-lo text-earn-sage",
     blurb: "Share Drift with your audience and your people get it free.",
     examples: "Creators, newsletters, communities",
-    price: "Free",
+    price: "Free for your people",
     cta: "Become a partner",
   },
   {
@@ -80,7 +80,7 @@ const PartnersPage = () => {
                     {t.name}
                   </h2>
                   <span
-                    className={`inline-flex items-center rounded-full px-3 py-1.5 font-kicker uppercase tracking-[0.14em] text-[10px] ${t.badgeClass}`}
+                    className={`inline-flex shrink-0 items-center rounded-full px-3 py-1.5 font-kicker uppercase tracking-[0.14em] text-[10px] ${t.badgeClass}`}
                   >
                     {t.badge}
                   </span>
@@ -107,6 +107,9 @@ const PartnersPage = () => {
         {/* how it works */}
         <section>
           <Kicker>How it works</Kicker>
+          <h2 className="mt-4 font-display text-2xl text-ink-deep">
+            From first message to access
+          </h2>
           <ol className="mt-6 grid md:grid-cols-3 gap-6">
             {steps.map((s, i) => (
               <li
@@ -138,6 +141,9 @@ const PartnersPage = () => {
         {/* faq */}
         <section className="max-w-2xl mx-auto">
           <Kicker>Questions</Kicker>
+          <h2 className="mt-4 font-display text-2xl text-ink-deep">
+            Frequently asked
+          </h2>
           <div className="mt-4 rounded-card bg-paper-card border border-line px-6">
             {faqs.map((f) => (
               <FAQItem key={f.question} {...f} />

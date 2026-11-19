@@ -21,6 +21,8 @@ export const PARTNER_TRACKS = [
   "Not sure yet",
 ] as const;
 
+export const PARTNER_MESSAGE_MAX = 1000;
+
 export const partnerFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100),
   email: z.string().email("Please enter a valid email address"),
@@ -33,7 +35,10 @@ export const partnerFormSchema = z.object({
   message: z
     .string()
     .min(10, "Message must be at least 10 characters")
-    .max(1500, "Message must be 1500 characters or fewer"),
+    .max(
+      PARTNER_MESSAGE_MAX,
+      `Message must be ${PARTNER_MESSAGE_MAX} characters or fewer`
+    ),
 });
 
 export type PartnerFormData = z.infer<typeof partnerFormSchema>;
