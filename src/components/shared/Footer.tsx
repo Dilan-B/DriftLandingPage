@@ -27,6 +27,7 @@ const Footer = () => {
       links: [
         { href: "/support", label: "Support & FAQ" },
         { href: "/contact", label: "Contact" },
+        { href: "/partners", label: "Partners" },
       ],
     },
   ];
