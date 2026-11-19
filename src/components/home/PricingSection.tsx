@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Kicker from "@/components/ui/Kicker";
 import BlurText from "@/components/ui/BlurText";
 import TiltCard from "@/components/ui/TiltCard";
@@ -134,6 +135,16 @@ const PricingSection = () => {
             </div>
           </TiltCard>
         </div>
+
+        <p className="mt-10 text-center text-ink-mid">
+          Bringing Drift to a team, school or audience?{" "}
+          <Link
+            href="/partners"
+            className="text-earn-deep font-medium hover:text-earn-deep-hi"
+          >
+            See partner options &rarr;
+          </Link>
+        </p>
       </div>
     </section>
   );
