@@ -14,3 +14,26 @@ export const contactFormSchema = z.object({
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
+
+export const PARTNER_TRACKS = [
+  "Marketing partner (free)",
+  "Paid team / organization",
+  "Not sure yet",
+] as const;
+
+export const partnerFormSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters").max(100),
+  email: z.string().email("Please enter a valid email address"),
+  organization: z
+    .string()
+    .min(2, "Tell us your organization or handle")
+    .max(120),
+  track: z.enum(PARTNER_TRACKS),
+  size: z.string().max(40, "Keep this under 40 characters").optional(),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(1500, "Message must be 1500 characters or fewer"),
+});
+
+export type PartnerFormData = z.infer<typeof partnerFormSchema>;
