@@ -4,10 +4,16 @@ import Reveal from "@/components/ui/Reveal";
 import FAQItem from "@/components/ui/FAQItem";
 import PartnerForm from "@/components/ui/PartnerForm";
 
+const description =
+  "Bring Drift to your team, community or audience — free for marketing partners, custom plans for organizations.";
+
 export const metadata: Metadata = {
   title: "Partners",
-  description:
-    "Bring Drift to your team, community or audience — free for marketing partners, custom plans for organizations.",
+  description,
+  openGraph: {
+    title: "Partners - Drift",
+    description,
+  },
 };
 
 const tracks = [

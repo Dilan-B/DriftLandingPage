@@ -91,7 +91,6 @@ const PartnerForm = () => {
       );
       window.location.href = `mailto:${CONTACT_INBOX}?subject=${subject}&body=${body}`;
       setSubmitStatus("success");
-      setFormData(initialState);
     } catch (error) {
       console.error("Form submission error:", error);
       setSubmitStatus("error");
@@ -255,7 +254,7 @@ const PartnerForm = () => {
           <p
             id="partner-message-count"
             className={`text-sm mt-1.5 shrink-0 ${
-              formData.message.length > PARTNER_MESSAGE_MAX
+              formData.message.length >= PARTNER_MESSAGE_MAX
                 ? "text-clay"
                 : "text-ink-faint"
             }`}
