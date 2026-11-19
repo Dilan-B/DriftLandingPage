@@ -53,3 +53,4 @@ drift-site.zip
 *.swo
 .DS_Store
 Thumbs.db
+.superpowers/
