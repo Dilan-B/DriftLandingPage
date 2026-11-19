@@ -3,18 +3,14 @@ import Kicker from "@/components/ui/Kicker";
 import Reveal from "@/components/ui/Reveal";
 import FAQItem from "@/components/ui/FAQItem";
 import PartnerForm from "@/components/ui/PartnerForm";
+import { pageMetadata } from "@/lib/pageMetadata";
 
-const description =
-  "Bring Drift to your team, community or audience — free for marketing partners, custom plans for organizations.";
-
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Partners",
-  description,
-  openGraph: {
-    title: "Partners - Drift",
-    description,
-  },
-};
+  description:
+    "Bring Drift to your team, community or audience — free for marketing partners, custom plans for organizations.",
+  path: "/partners",
+});
 
 const tracks = [
   {
