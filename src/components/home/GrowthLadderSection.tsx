@@ -9,13 +9,13 @@ import DotField from "@/components/decorative/DotField";
 import { GROWTH_LEVELS } from "@/lib/colors";
 
 const BLURBS = [
-  "Where it all begins. The smallest start still counts.",
-  "Roots taking hold. The habit finds its footing.",
-  "Standing taller. A few good days become a rhythm.",
-  "Branching out. Your streak starts to feel natural.",
-  "Full and leafy. Focus becomes the default, not the effort.",
-  "Deep and steady. The forest barely notices a storm.",
-  "Ancient and unshakable. Years of small wins, grown wild.",
+  "The first blocked app, the first earned minute.",
+  "A couple of tasks in. The loop starts making sense.",
+  "You are reaching for the phone a little less automatically.",
+  "The habit has some shape now.",
+  "Your default is changing, quietly.",
+  "A routine you can come back to after a messy day.",
+  "Less impulse, more choice. That is the point.",
 ];
 
 const LadderHeader = () => (
@@ -26,15 +26,15 @@ const LadderHeader = () => (
       </Kicker>
       <BlurText
         as="h2"
-        text="Watch yourself grow, level by level."
+        text="Your plant tracks the habit."
         animateBy="words"
         direction="top"
         delay={90}
         className="mt-5 font-display text-4xl sm:text-5xl leading-tight text-[color:var(--growth-text)]"
       />
       <p className="mt-5 text-lg text-[color:var(--growth-muted-strong)] leading-relaxed">
-        Every task earns XP. As you stack consistent days, your plant climbs
-        seven living stages - from a single Seedling to ancient Old Growth.
+        Tasks earn XP. Enough XP moves your plant through seven stages, from
+        Seedling to Old Growth.
       </p>
     </div>
   </div>

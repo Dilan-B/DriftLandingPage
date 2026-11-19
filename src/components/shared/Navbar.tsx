@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 import ThemeToggle from "@/components/shared/ThemeToggle";
+import { APP_STORE_URL } from "@/lib/links";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,8 +57,8 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
-            <Button as="a" href="/#waitlist" variant="primary" size="sm">
-              Get early access
+            <Button as="a" href={APP_STORE_URL} variant="primary" size="sm">
+              Download
             </Button>
           </div>
 
@@ -98,12 +99,12 @@ const Navbar = () => {
             <div className="pt-2">
               <Button
                 as="a"
-                href="/#waitlist"
+                href={APP_STORE_URL}
                 variant="primary"
                 size="md"
                 fullWidth
               >
-                Get early access
+                Download Drift
               </Button>
             </div>
           </div>

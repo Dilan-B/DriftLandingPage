@@ -1,9 +1,9 @@
-import { Playfair_Display, Oswald, DM_Sans, Orbitron } from "next/font/google";
+import { Manrope, Newsreader, Oswald } from "next/font/google";
 
-export const playfairDisplay = Playfair_Display({
+export const newsreader = Newsreader({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-playfair",
+  variable: "--font-newsreader",
   display: "swap",
 });
 
@@ -14,16 +14,9 @@ export const oswald = Oswald({
   display: "swap",
 });
 
-export const dmSans = DM_Sans({
+export const manrope = Manrope({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-dm-sans",
-  display: "swap",
-});
-
-export const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  variable: "--font-orbitron",
+  variable: "--font-manrope",
   display: "swap",
 });

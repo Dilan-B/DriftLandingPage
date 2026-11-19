@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import ThemeToggle from "@/components/shared/ThemeToggle";
+import { APP_STORE_URL } from "@/lib/links";
 import "./CardNav.css";
 
 interface NavLink {
@@ -187,9 +188,14 @@ const CardNav = ({ ease = "power3.out" }: { ease?: string }) => {
 
           <div className="card-nav-right">
             <ThemeToggle />
-            <Link href="/#waitlist" className="card-nav-cta">
-              Get early access
-            </Link>
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-nav-cta"
+            >
+              Download
+            </a>
           </div>
         </div>
 

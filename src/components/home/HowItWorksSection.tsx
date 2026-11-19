@@ -7,21 +7,21 @@ const HowItWorksSection = () => {
   const steps = [
     {
       n: "01",
-      pill: "Set up",
-      title: "Choose what to block",
-      body: "Pick the apps that pull you in. Drift uses the iOS Screen Time shield to keep them behind a gentle lock.",
+      pill: "Block",
+      title: "Choose the apps",
+      body: "Pick the places you lose time. Drift uses Apple's Screen Time shield, so the block lives at the system level.",
     },
     {
       n: "02",
-      pill: "Earn",
-      title: "Complete real tasks for time",
-      body: "Walk, read, tidy, call a friend. Each finished task adds minutes to your balance — small wins that actually count.",
+      pill: "Do",
+      title: "Finish a task",
+      body: "Walk, read, tidy, stretch, call someone back. You decide what counts and how much time it earns.",
     },
     {
       n: "03",
-      pill: "Unlock",
-      title: "Time drains only while you use them",
-      body: "Open a blocked app and your earned minutes tick down. Hit zero and the shield returns. No guilt, just a clear edge.",
+      pill: "Use",
+      title: "Spend the minutes",
+      body: "Open a blocked app and the balance starts ticking down. When it runs out, the shield comes back.",
     },
   ];
 
@@ -32,7 +32,7 @@ const HowItWorksSection = () => {
           <Kicker>How it works</Kicker>
           <BlurText
             as="h2"
-            text="Three steps. One calmer phone."
+            text="Block first. Earn access back."
             animateBy="words"
             direction="top"
             delay={90}

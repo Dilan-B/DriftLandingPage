@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { playfairDisplay, oswald, dmSans, orbitron } from "@/lib/fonts";
+import { manrope, newsreader, oswald } from "@/lib/fonts";
 import "@/styles/globals.css";
 import CardNav from "@/components/shared/CardNav";
 import Footer from "@/components/shared/Footer";
@@ -10,11 +10,11 @@ import ScrollThread from "@/components/decorative/ScrollThread";
 export const metadata: Metadata = {
   metadataBase: new URL("https://driftproductivity.com"),
   title: {
-    default: "Drift – Earn Your Screen Time",
-    template: "%s · Drift",
+    default: "Drift - Earn Your Screen Time",
+    template: "%s - Drift",
   },
   description:
-    "Drift blocks distracting apps and hands the time back only when you complete real tasks. Gentle accountability that helps you grow.",
+    "Drift blocks distracting apps until you finish the tasks you meant to do first.",
   keywords: [
     "screen time",
     "app blocker",
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://driftproductivity.com",
     siteName: "Drift",
-    title: "Drift – Earn Your Screen Time",
+    title: "Drift - Earn Your Screen Time",
     description:
-      "Block distracting apps, earn time with real tasks, and grow from Seedling to Old Growth.",
+      "Block distracting apps, earn minutes back, and keep your phone from running the day.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Drift – Earn Your Screen Time",
+    title: "Drift - Earn Your Screen Time",
     description:
-      "Block distracting apps, earn time with real tasks, and grow from Seedling to Old Growth.",
+      "Block distracting apps, earn minutes back, and keep your phone from running the day.",
   },
 };
 
@@ -50,7 +50,6 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-// Set the theme class before paint to avoid a flash of the wrong theme.
 const themeScript = `
 (function(){try{var t=localStorage.getItem('drift-theme');var d=t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d){document.documentElement.classList.add('dark');}}catch(e){}})();
 `;
@@ -70,7 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${oswald.variable} ${dmSans.variable} ${orbitron.variable}`}
+      className={`${newsreader.variable} ${oswald.variable} ${manrope.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -84,7 +83,6 @@ export default function RootLayout({
           <Footer />
         </MotionProvider>
 
-        {/* Google Analytics 4 — replace G-XXXXXXXXXX with your property ID */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
           strategy="afterInteractive"

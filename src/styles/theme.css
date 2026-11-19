@@ -52,10 +52,9 @@
     0 28px 56px rgba(31, 58, 42, 0.14);
 
   /* Fonts */
-  --font-playfair: "Playfair Display", Georgia, serif;
-  --font-dm-sans: "DM Sans", system-ui, sans-serif;
+  --font-newsreader: "Newsreader", Georgia, serif;
+  --font-manrope: "Manrope", system-ui, sans-serif;
   --font-oswald: "Oswald", sans-serif;
-  --font-orbitron: "Orbitron", sans-serif;
 }
 
 /* ---------------------------- DARK ---------------------------- */

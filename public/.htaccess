@@ -1,0 +1,2 @@
+# Serve the site's own styled 404 page for unknown URLs (keeps visitors on the site)
+ErrorDocument 404 /404.html

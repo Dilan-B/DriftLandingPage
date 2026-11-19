@@ -69,10 +69,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-playfair)", "Georgia", "serif"],
-        body: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-newsreader)", "Georgia", "serif"],
+        body: ["var(--font-manrope)", "system-ui", "sans-serif"],
         wordmark: ["var(--font-oswald)", "sans-serif"],
-        kicker: ["var(--font-orbitron)", "sans-serif"],
+        kicker: ["var(--font-manrope)", "system-ui", "sans-serif"],
       },
       borderRadius: {
         chip: "10px",

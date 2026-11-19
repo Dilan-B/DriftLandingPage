@@ -37,7 +37,7 @@ A production-ready landing page for Drift, a screen-time reduction app. This sit
 - **Styling**: Tailwind CSS
 - **Animation**: Framer Motion
 - **Validation**: Zod
-- **Fonts**: Google Fonts (Playfair Display, Oswald, DM Sans, Orbitron)
+- **Fonts**: Google Fonts (Newsreader, Manrope, Oswald)
 
 ## Getting Started
 
@@ -207,8 +207,7 @@ properties in `src/styles/theme.css`:
 ```
 
 Tailwind maps these via `tailwind.config.ts` (`paper.*`, `ink.*`, `earn.*`).
-Typography: Playfair Display (headlines), DM Sans (body), Oswald (wordmark only),
-Orbitron (tiny uppercase kickers only).
+Typography: Newsreader (headlines), Manrope (body and labels), Oswald (wordmark only).
 
 ## Performance Metrics
 

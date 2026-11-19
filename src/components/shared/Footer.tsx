@@ -40,7 +40,6 @@ const Footer = () => {
     <footer className="mt-24 border-t border-line bg-paper-cream">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
-          {/* Brand */}
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <span className="font-wordmark font-bold text-2xl tracking-tight text-ink-deep">
@@ -49,8 +48,8 @@ const Footer = () => {
               <span className="h-1.5 w-1.5 rounded-full bg-earn-terra mt-2" />
             </div>
             <p className="text-ink-mid text-[15px] leading-relaxed max-w-xs">
-              Earn your screen time. Gentle accountability that helps you grow,
-              one real task at a time.
+              Block the apps you keep opening. Earn the minutes back by doing
+              something first.
             </p>
             <div className="mt-5 flex gap-3">
               {social.map((s) => (
@@ -93,7 +92,7 @@ const Footer = () => {
             © {year} Drift. All rights reserved.
           </p>
           <p className="text-ink-faint text-sm">
-            iOS now · Android coming soon
+            iOS now. Android coming soon.
           </p>
         </div>
       </div>

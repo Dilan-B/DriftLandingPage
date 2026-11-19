@@ -8,7 +8,7 @@ interface KickerProps {
 }
 
 /**
- * Tiny uppercase Orbitron eyebrow label. The ONLY place Orbitron is used.
+ * Tiny uppercase eyebrow label.
  */
 const Kicker = ({ children, className, dot = true }: KickerProps) => {
   return (

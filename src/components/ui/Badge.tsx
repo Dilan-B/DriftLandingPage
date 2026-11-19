@@ -5,7 +5,7 @@ interface BadgeProps {
   children: React.ReactNode;
   variant?: "sage" | "terra" | "blue" | "clay";
   className?: string;
-  /** render label in uppercase Orbitron (level-badge style) */
+  /** render label in the compact uppercase kicker style */
   kicker?: boolean;
 }
 

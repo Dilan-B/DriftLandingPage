@@ -11,13 +11,11 @@ import CTASection from "@/components/home/CTASection";
 import ScrollSection from "@/components/ui/ScrollSection";
 
 export const metadata: Metadata = {
-  title: "Drift – Stop Mindless Scrolling",
-  description:
-    "Trade tasks for screen time. Replace mindless scrolling with real things to do.",
+  title: "Drift - Stop Mindless Scrolling",
+  description: "Block distracting apps until you finish something first.",
   openGraph: {
-    title: "Drift – Stop Mindless Scrolling",
-    description:
-      "Trade tasks for screen time. Replace mindless scrolling with real things to do.",
+    title: "Drift - Stop Mindless Scrolling",
+    description: "Block distracting apps until you finish something first.",
     url: "https://driftproductivity.com",
   },
 };
