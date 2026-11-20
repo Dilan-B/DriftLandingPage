@@ -10,6 +10,8 @@ import { SITE_URL } from "@/lib/site";
 import { OG_IMAGES } from "@/lib/pageMetadata";
 import { organizationSchema, websiteSchema } from "@/lib/structuredData";
 
+const CF_ANALYTICS_TOKEN = "7120ab8188b34e949b4521f696556397";
+
 const DEFAULT_TITLE = "Drift: App Blocker That Makes You Earn Screen Time";
 const DEFAULT_DESCRIPTION =
   "Drift is an iPhone app blocker that locks distracting apps until you finish your tasks. Earn your screen time back and stop doomscrolling.";
@@ -99,6 +101,15 @@ export default function RootLayout({
         </MotionProvider>
 
         <JsonLd data={[organizationSchema, websiteSchema]} />
+        {/* Cloudflare Web Analytics: cookie-free, no consent banner needed.
+            Installed manually because automatic injection doesn't reach
+            Worker-served pages. The token is public by design. */}
+        <script
+          type="module"
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: CF_ANALYTICS_TOKEN })}
+        />
       </body>
     </html>
   );
