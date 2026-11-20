@@ -345,6 +345,13 @@ body {
 .legal-content section:first-child h2 {
   margin-top: 0;
 }
+.legal-content h3 {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink-deep);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
 .legal-content p {
   color: var(--ink-mid);
   line-height: 1.75;
