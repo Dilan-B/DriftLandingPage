@@ -43,6 +43,8 @@ Apple's built-in limits are easy to tap past ("Ignore Limit"). Drift uses the sa
 ## Guides
 
 - [Drift vs Apple Screen Time](https://driftproductivity.com/vs/apple-screen-time/): honest comparison, including where Apple's free tools are enough
+- [Drift vs Opal](https://driftproductivity.com/vs/opal/): earning screen time compared with rule-based blocking and focus sessions
+- [Drift vs one sec](https://driftproductivity.com/vs/one-sec/): earning screen time compared with a pause before apps open
 - [How to stop doomscrolling](https://driftproductivity.com/guides/how-to-stop-doomscrolling/): seven practical habits
 - [How to reduce screen time on iPhone](https://driftproductivity.com/guides/reduce-screen-time-iphone/): step-by-step with built-in iOS settings
 

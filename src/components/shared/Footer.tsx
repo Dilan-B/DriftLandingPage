@@ -20,6 +20,8 @@ const Footer = () => {
         { href: "/guides/how-to-stop-doomscrolling", label: "Stop doomscrolling" },
         { href: "/guides/reduce-screen-time-iphone", label: "Reduce screen time" },
         { href: "/vs/apple-screen-time", label: "Drift vs Screen Time" },
+        { href: "/vs/opal", label: "Drift vs Opal" },
+        { href: "/vs/one-sec", label: "Drift vs one sec" },
       ],
     },
     {

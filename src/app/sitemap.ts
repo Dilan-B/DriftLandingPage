@@ -11,6 +11,8 @@ const ROUTES: { path: string; priority: number; changeFrequency: "weekly" | "mon
   { path: "/family", priority: 0.8, changeFrequency: "monthly" },
   { path: "/partners", priority: 0.5, changeFrequency: "monthly" },
   { path: "/vs/apple-screen-time", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/vs/opal", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/vs/one-sec", priority: 0.7, changeFrequency: "monthly" },
   { path: "/guides/how-to-stop-doomscrolling", priority: 0.7, changeFrequency: "monthly" },
   { path: "/guides/reduce-screen-time-iphone", priority: 0.7, changeFrequency: "monthly" },
   { path: "/safety", priority: 0.5, changeFrequency: "yearly" },
