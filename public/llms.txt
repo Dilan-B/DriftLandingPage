@@ -33,6 +33,7 @@ Apple's built-in limits are easy to tap past ("Ignore Limit"). Drift uses the sa
 
 - [Homepage](https://driftproductivity.com/): overview, how it works, features, pricing, FAQ
 - [Download on the App Store](https://apps.apple.com/us/app/drift-productivity/id6778215875)
+- [Family plan](https://driftproductivity.com/family/): how parents assign tasks, set the minutes, and approve them on kids' iPhones; pricing for 1 to 5 kids
 - [Support & FAQ](https://driftproductivity.com/support/): help with blocking, earning time, verification, Family plans, billing
 - [Safety & AI Verification](https://driftproductivity.com/safety/): how AI task verification works and its limits
 - [Privacy Policy](https://driftproductivity.com/privacy/): Drift stores only what the app needs and does not sell data

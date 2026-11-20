@@ -8,6 +8,7 @@ const ROUTES: { path: string; priority: number; changeFrequency: "weekly" | "mon
   { path: "/", priority: 1, changeFrequency: "weekly" },
   { path: "/support", priority: 0.7, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
+  { path: "/family", priority: 0.8, changeFrequency: "monthly" },
   { path: "/partners", priority: 0.5, changeFrequency: "monthly" },
   { path: "/vs/apple-screen-time", priority: 0.7, changeFrequency: "monthly" },
   { path: "/guides/how-to-stop-doomscrolling", priority: 0.7, changeFrequency: "monthly" },

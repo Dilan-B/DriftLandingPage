@@ -124,6 +124,12 @@ const PricingSection = () => {
                   <FeatureLine key={item}>{item}</FeatureLine>
                 ))}
               </ul>
+              <Link
+                href="/family"
+                className="mt-6 text-earn-deep font-medium hover:text-earn-deep-hi"
+              >
+                How the Family plan works &rarr;
+              </Link>
               <a
                 href={APP_STORE_URL}
                 target="_blank"
