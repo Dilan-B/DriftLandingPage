@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LegalPageLayout from "@/components/layouts/LegalPageLayout";
 import { pageMetadata } from "@/lib/pageMetadata";
+import { CONTACT_INBOX } from "@/lib/links";
 
 export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
@@ -150,7 +151,7 @@ const PrivacyPage = () => (
         Drift is not intended for children under 13, and we don&apos;t knowingly
         collect their data. If we learn we&apos;ve collected data from a child
         under 13, we&apos;ll delete it. Parents or guardians can reach us at{" "}
-        <a href="mailto:driftappcontact@gmail.com">driftappcontact@gmail.com</a>.
+        <a href={`mailto:${CONTACT_INBOX}`}>{CONTACT_INBOX}</a>.
       </p>
     </section>
 
@@ -179,7 +180,7 @@ const PrivacyPage = () => (
       <h2>Contact Us</h2>
       <p>
         Questions about this policy or your data? Email us at{" "}
-        <a href="mailto:driftappcontact@gmail.com">driftappcontact@gmail.com</a>.
+        <a href={`mailto:${CONTACT_INBOX}`}>{CONTACT_INBOX}</a>.
       </p>
     </section>
   </LegalPageLayout>

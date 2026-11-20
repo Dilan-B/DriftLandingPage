@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
+import { CONTACT_INBOX } from "@/lib/links";
 
 const inputClasses =
   "w-full rounded-btn bg-paper-warm border border-line px-4 py-3 text-[15px] text-ink-deep placeholder:text-ink-faint transition-colors focus:outline-none focus:border-earn-sage";
@@ -63,7 +64,7 @@ const ContactForm = () => {
       const body = encodeURIComponent(
         `${formData.message}\n\n— ${formData.name} (${formData.email})`
       );
-      window.location.href = `mailto:driftappcontact@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${CONTACT_INBOX}?subject=${subject}&body=${body}`;
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setSubmitStatus("idle"), 6000);

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LegalPageLayout from "@/components/layouts/LegalPageLayout";
 import { pageMetadata } from "@/lib/pageMetadata";
+import { CONTACT_INBOX } from "@/lib/links";
 
 export const metadata: Metadata = pageMetadata({
   title: "Safety & AI Verification",
@@ -126,7 +127,7 @@ const SafetyPage = () => (
       <p>
         If you disagree with a verification decision or have a safety concern,
         email{" "}
-        <a href="mailto:driftappcontact@gmail.com">driftappcontact@gmail.com</a>.
+        <a href={`mailto:${CONTACT_INBOX}`}>{CONTACT_INBOX}</a>.
         We review appeals manually and take your feedback seriously.
       </p>
     </section>

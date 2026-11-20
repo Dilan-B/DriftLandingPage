@@ -3,7 +3,7 @@ import Link from "next/link";
 import Kicker from "@/components/ui/Kicker";
 import FAQItem from "@/components/ui/FAQItem";
 import ContactForm from "@/components/ui/ContactForm";
-import { APP_STORE_URL } from "@/lib/links";
+import { APP_STORE_URL, CONTACT_INBOX } from "@/lib/links";
 import { pageMetadata } from "@/lib/pageMetadata";
 
 export const metadata: Metadata = pageMetadata({
@@ -203,10 +203,10 @@ const SupportPage = () => {
             <p className="mt-3 text-ink-mid leading-relaxed">
               Email us at{" "}
               <a
-                href="mailto:driftappcontact@gmail.com"
+                href={`mailto:${CONTACT_INBOX}`}
                 className="text-earn-deep font-medium hover:text-earn-deep-hi"
               >
-                driftappcontact@gmail.com
+                {CONTACT_INBOX}
               </a>{" "}
               or use the form. You can also visit the{" "}
               <Link

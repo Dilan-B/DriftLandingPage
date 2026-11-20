@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LegalPageLayout from "@/components/layouts/LegalPageLayout";
 import { pageMetadata } from "@/lib/pageMetadata";
+import { CONTACT_INBOX } from "@/lib/links";
 
 export const metadata: Metadata = pageMetadata({
   title: "Terms of Service",
@@ -147,7 +148,7 @@ const TermsPage = () => (
       <h2>Contact</h2>
       <p>
         Questions about these Terms? Email{" "}
-        <a href="mailto:driftappcontact@gmail.com">driftappcontact@gmail.com</a>.
+        <a href={`mailto:${CONTACT_INBOX}`}>{CONTACT_INBOX}</a>.
       </p>
     </section>
   </LegalPageLayout>

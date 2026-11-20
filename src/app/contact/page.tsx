@@ -3,6 +3,7 @@ import Link from "next/link";
 import Kicker from "@/components/ui/Kicker";
 import ContactForm from "@/components/ui/ContactForm";
 import { pageMetadata } from "@/lib/pageMetadata";
+import { CONTACT_INBOX } from "@/lib/links";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
@@ -36,10 +37,10 @@ const ContactPage = () => {
                 Email
               </p>
               <a
-                href="mailto:support@driftproductivity.com"
+                href={`mailto:${CONTACT_INBOX}`}
                 className="mt-2 block text-earn-deep font-medium hover:text-earn-deep-hi break-all"
               >
-                support@driftproductivity.com
+                {CONTACT_INBOX}
               </a>
             </div>
 

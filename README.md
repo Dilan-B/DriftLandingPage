@@ -90,7 +90,7 @@ Search and replace these placeholders throughout the site:
 
 - `[Insert App Store Link]` → Actual App Store URL
 - `June 17, 2026` → Effective date for legal pages
-- `driftappcontact@gmail.com` → Your support email
+- `hello@ridilabs.com` → Your support email
 - `G-XXXXXXXXXX` → Google Analytics ID
 
 ### 3. SendGrid Integration
@@ -295,4 +295,4 @@ npx tsc --noEmit
 
 ## Support
 
-For questions about the landing page, contact driftappcontact@gmail.com
+For questions about the landing page, contact hello@ridilabs.com

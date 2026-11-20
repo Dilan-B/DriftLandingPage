@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LegalPageLayout from "@/components/layouts/LegalPageLayout";
 import { pageMetadata } from "@/lib/pageMetadata";
+import { CONTACT_INBOX } from "@/lib/links";
 
 export const metadata: Metadata = pageMetadata({
   title: "Community Guidelines",
@@ -99,8 +100,8 @@ const CommunityGuidelinesPage = () => (
         <li>Tapping Report on a user&apos;s profile or submission in the app</li>
         <li>
           Emailing{" "}
-          <a href="mailto:driftappcontact@gmail.com">
-            driftappcontact@gmail.com
+          <a href={`mailto:${CONTACT_INBOX}`}>
+            {CONTACT_INBOX}
           </a>{" "}
           with details
         </li>
