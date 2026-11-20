@@ -29,11 +29,24 @@ const ITEMS: NavItem[] = [
       { label: "Features", href: "/#features", ariaLabel: "Drift features" },
       { label: "Growth ladder", href: "/#ladder", ariaLabel: "The growth ladder" },
       { label: "Pricing", href: "/#pricing", ariaLabel: "Pricing" },
+      { label: "Family plan", href: "/family", ariaLabel: "The Family plan" },
+    ],
+  },
+  {
+    label: "Guides",
+    bgColor: "#223F2D",
+    textColor: "#FAF6EE",
+    links: [
+      { label: "Stop doomscrolling", href: "/guides/how-to-stop-doomscrolling", ariaLabel: "How to stop doomscrolling" },
+      { label: "Reduce screen time", href: "/guides/reduce-screen-time-iphone", ariaLabel: "How to reduce screen time on iPhone" },
+      { label: "vs Screen Time", href: "/vs/apple-screen-time", ariaLabel: "Drift vs Apple Screen Time" },
+      { label: "vs Opal", href: "/vs/opal", ariaLabel: "Drift vs Opal" },
+      { label: "vs one sec", href: "/vs/one-sec", ariaLabel: "Drift vs one sec" },
     ],
   },
   {
     label: "Help",
-    bgColor: "#25462F",
+    bgColor: "#26472F",
     textColor: "#FAF6EE",
     links: [
       { label: "Support & FAQ", href: "/support", ariaLabel: "Support" },
@@ -99,7 +112,8 @@ const CardNav = ({ ease = "power3.out" }: { ease?: string }) => {
         return total;
       }
     }
-    return 240;
+    // Desktop: cards sit side by side; tall enough for the longest list.
+    return 300;
   };
 
   const createTimeline = () => {
@@ -147,6 +161,9 @@ const CardNav = ({ ease = "power3.out" }: { ease?: string }) => {
     if (!tl) return;
     if (!isExpanded) {
       setIsExpanded(true);
+      // Re-measure on every open: fonts or a resize since mount change the
+      // height the menu needs, and a stale value clips the last card.
+      tl.invalidate();
       tl.play(0);
     } else {
       tl.eventCallback("onReverseComplete", () => setIsExpanded(false));

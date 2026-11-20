@@ -4,7 +4,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 92%;
-  max-width: 760px;
+  max-width: 880px;
   z-index: 90;
   box-sizing: border-box;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
@@ -233,7 +233,17 @@
     gap: 8px;
   }
   .nav-card {
+    /* Size to content when stacked; `flex: 1 1 0` from desktop would pin
+       each card to min-height and let its links spill out. */
+    flex: 0 0 auto;
     min-height: 64px;
+    padding: 12px 14px;
+  }
+  /* Two columns of links keep the open menu shorter than a phone screen. */
+  .nav-card-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 12px;
   }
   .card-nav-cta {
     font-size: 0.82rem;
