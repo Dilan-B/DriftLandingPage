@@ -3,6 +3,8 @@ import Kicker from "@/components/ui/Kicker";
 import Reveal from "@/components/ui/Reveal";
 import FAQItem from "@/components/ui/FAQItem";
 import PartnerForm from "@/components/ui/PartnerForm";
+import PartnerTrackLink from "@/components/ui/PartnerTrackLink";
+import { PARTNER_TRACKS } from "@/lib/validation";
 import { pageMetadata } from "@/lib/pageMetadata";
 
 export const metadata: Metadata = pageMetadata({
@@ -21,6 +23,7 @@ const tracks = [
     examples: "Creators, newsletters, communities",
     price: "Free for your people",
     cta: "Become a partner",
+    track: PARTNER_TRACKS[0],
   },
   {
     name: "Teams & organizations",
@@ -30,6 +33,7 @@ const tracks = [
     examples: "Companies, schools, clinics, clubs",
     price: "Custom — tell us your size.",
     cta: "Ask about your team",
+    track: PARTNER_TRACKS[1],
   },
 ];
 
@@ -95,12 +99,12 @@ const PartnersPage = () => {
                 <p className="mt-5 font-display text-xl text-ink-deep flex-1">
                   {t.price}
                 </p>
-                <a
-                  href="#inquire"
+                <PartnerTrackLink
+                  track={t.track}
                   className="mt-6 rounded-btn bg-cta-bg text-cta-text font-medium px-6 py-3.5 text-[15px] text-center hover:-translate-y-[1px] active:scale-[0.98] transition-all"
                 >
                   {t.cta}
-                </a>
+                </PartnerTrackLink>
               </div>
             </Reveal>
           ))}

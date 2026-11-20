@@ -154,7 +154,18 @@ const CardNav = ({ ease = "power3.out" }: { ease?: string }) => {
     }
   };
 
-  const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
+  // Escape closes the open menu
+  useEffect(() => {
+    if (!isExpanded) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") toggleMenu();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isExpanded]);
+
+  const setCardRef =(i: number) => (el: HTMLDivElement | null) => {
     if (el) cardsRef.current[i] = el;
   };
 
@@ -169,6 +180,8 @@ const CardNav = ({ ease = "power3.out" }: { ease?: string }) => {
             onClick={toggleMenu}
             role="button"
             aria-label={isExpanded ? "Close menu" : "Open menu"}
+            aria-expanded={isExpanded}
+            aria-controls="card-nav-content"
             tabIndex={0}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -188,6 +201,9 @@ const CardNav = ({ ease = "power3.out" }: { ease?: string }) => {
           </Link>
 
           <div className="card-nav-right">
+            <Link href="/partners" className="card-nav-toplink">
+              Partners
+            </Link>
             <ThemeToggle />
             <a
               href={APP_STORE_URL}
@@ -200,7 +216,11 @@ const CardNav = ({ ease = "power3.out" }: { ease?: string }) => {
           </div>
         </div>
 
-        <div className="card-nav-content" aria-hidden={!isExpanded}>
+        <div
+          id="card-nav-content"
+          className="card-nav-content"
+          aria-hidden={!isExpanded}
+        >
           {ITEMS.map((item, idx) => (
             <div
               key={item.label}

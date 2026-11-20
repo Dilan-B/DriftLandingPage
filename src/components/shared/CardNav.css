@@ -109,6 +109,27 @@
   gap: 0.5rem;
 }
 
+.card-nav-toplink {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  text-decoration: none;
+  padding: 0 0.5rem;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.card-nav-toplink:hover {
+  color: var(--ink-deep);
+}
+
+/* On phones the centered logo needs the room; Partners stays in the menu. */
+@media (max-width: 639px) {
+  .card-nav-toplink {
+    display: none;
+  }
+}
+
 .card-nav-cta {
   background-color: var(--cta-bg);
   color: var(--cta-text);

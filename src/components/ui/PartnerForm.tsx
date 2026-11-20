@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   partnerFormSchema,
   PARTNER_TRACKS,
@@ -8,6 +8,7 @@ import {
   type PartnerFormData,
 } from "@/lib/validation";
 import { CONTACT_INBOX } from "@/lib/links";
+import { PARTNER_TRACK_EVENT } from "@/components/ui/PartnerTrackLink";
 
 const inputClasses =
   "w-full rounded-btn bg-paper-warm border border-line px-4 py-3 text-[15px] text-ink-deep placeholder:text-ink-faint transition-colors focus:outline-none focus:border-earn-sage";
@@ -41,6 +42,18 @@ const PartnerForm = () => {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
     "idle"
   );
+
+  // Preselect the track when a visitor clicks a track card's button.
+  useEffect(() => {
+    const onTrack = (e: Event) => {
+      const track = (e as CustomEvent<unknown>).detail;
+      if (PARTNER_TRACKS.includes(track as FormState["track"])) {
+        setFormData((prev) => ({ ...prev, track: track as FormState["track"] }));
+      }
+    };
+    window.addEventListener(PARTNER_TRACK_EVENT, onTrack);
+    return () => window.removeEventListener(PARTNER_TRACK_EVENT, onTrack);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<
