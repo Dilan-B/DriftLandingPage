@@ -1,6 +1,6 @@
 # Moving driftproductivity.com to Cloudflare
 
-Goal: serve the site from **Cloudflare Pages** (fast global CDN, automatic HTTPS),
+Goal: serve the site from **Cloudflare** (Workers static assets: fast global CDN, automatic HTTPS),
 keep the **domain registration at Bluehost**, and do it without any downtime or
 damage to the domain's search or email reputation.
 
@@ -20,8 +20,8 @@ Order matters. Do the steps top to bottom and don't skip the checks.
 | Record | Current value | Problem |
 | --- | --- | --- |
 | Nameservers | `ns1.bluehost.com`, `ns2.bluehost.com` | — |
-| `A` @ | `50.6.2.202` (Bluehost shared server) | Will move to Cloudflare Pages |
-| `CNAME` www | `driftproductivity.com` | Will move to Cloudflare Pages |
+| `A` @ | `50.6.2.202` (Bluehost shared server) | Will move to Cloudflare |
+| `CNAME` www | `driftproductivity.com` | Will move to Cloudflare |
 | `A` webmail | `50.6.2.202` | Leftover cPanel default. No mailbox uses it. |
 | `MX` @ | `0 driftproductivity.com` | Leftover default pointing at the web server. There's no mailbox behind it. |
 | `TXT` @ (SPF) | `"DRIFTPRODUCTIVITY.COM."` | **Broken — no SPF.** Anyone can send mail claiming to be @driftproductivity.com. |
@@ -39,19 +39,26 @@ Order matters. Do the steps top to bottom and don't skip the checks.
    Email). If there turns out to be one, **stop** and update the email part of
    Step 3 before continuing.
 
-## Step 2 — Deploy the site to Cloudflare Pages (10 min)
+## Step 2 — Deploy the site to Cloudflare (10 min)
+
+Cloudflare's default flow is now **Workers** with static assets. It's the same
+free CDN hosting as Pages. The repo's `wrangler.jsonc` tells it to upload the
+static export in `out/`.
 
 1. Create a free Cloudflare account at dash.cloudflare.com.
-2. **Workers & Pages → Create → Pages → Connect to Git** → pick
-   `Dilan-B/DriftLandingPage` → branch `main`.
-3. Build settings:
-   - Framework preset: **Next.js (Static HTML Export)**
+2. **Workers & Pages → Create → Import a repository** → pick
+   `Dilan-B/DriftLandingPage` (branch `main`).
+3. Settings (these are the defaults Cloudflare fills in):
+   - Project name: `driftlandingpage` (must match `name` in `wrangler.jsonc`)
    - Build command: `npm run build`
-   - Build output directory: `out`
-   - Environment variable: `NODE_VERSION` = `20`
-4. Deploy, then open the `*.pages.dev` URL and click around. It should match the
-   live site. (Preview URLs send `X-Robots-Tag: noindex` via `public/_headers`,
-   so they will never compete with the real domain in Google.)
+   - Deploy command: `npx wrangler deploy`
+   - Preview command: `npx wrangler preview`
+   - Enable Preview builds: on is fine
+   - Protect with Cloudflare Access: **off** (on would hide the site behind a login)
+4. **Deploy**. Then open the `driftlandingpage.<account>.workers.dev` URL and
+   click around. It should match the live site. (`*.workers.dev` and preview
+   URLs send `X-Robots-Tag: noindex` via `public/_headers`, so they never
+   compete with the real domain in Google.)
 
 ## Step 3 — Add the domain to Cloudflare (10 min)
 
@@ -94,13 +101,17 @@ Order matters. Do the steps top to bottom and don't skip the checks.
 Until Step 5, the site keeps being served from Bluehost through Cloudflare
 (the `A @ 50.6.2.202` record you kept), so there's no downtime.
 
-## Step 5 — Attach the domain to Pages (5 min)
+## Step 5 — Attach the domain to the Worker (5 min)
 
-1. Workers & Pages → your project → **Custom domains** →
-   **Set up a custom domain** → `driftproductivity.com` → Activate. When it
-   asks to replace the existing `A @ 50.6.2.202` record, confirm.
-2. Repeat for `www.driftproductivity.com`.
-3. Both should show **Active** with an SSL certificate within a few minutes.
+A Worker custom domain can't be added while another DNS record uses the same
+name, so do this in one sitting (the site is down for about a minute):
+
+1. **DNS → Records** → delete `A @ 50.6.2.202` and `CNAME www`.
+2. Right away: Workers & Pages → `driftlandingpage` → **Settings → Domains &
+   Routes → Add → Custom domain** → `driftproductivity.com` → Add.
+3. Repeat for `www.driftproductivity.com`.
+4. Both should show **Active** with a certificate within a few minutes, and
+   Cloudflare creates the DNS records itself.
 
 ## Step 6 — HTTPS and one canonical URL (5 min). This is the big SEO fix.
 
@@ -122,8 +133,9 @@ trailing slash on pages). Everything else must 301 there.
 
 ## Step 7 — Analytics and crawl settings (5 min)
 
-1. Pages project → **Metrics → Web Analytics → Enable**. It's cookie-free, so no
-   consent banner is needed. The old Google Analytics placeholder has been
+1. **Analytics & Logs → Web Analytics → Add a site** → `driftproductivity.com`
+   → choose **automatic setup** (works because the domain is proxied through
+   Cloudflare). It's cookie-free, so no consent banner is needed. The old Google Analytics placeholder has been
    removed from the code.
 2. **Caching → Configuration → Crawler Hints: On**. This pings Bing/Yandex via
    IndexNow when content changes.

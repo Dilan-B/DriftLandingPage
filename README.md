@@ -147,8 +147,9 @@ src/
 
 ## Deployment
 
-Production is **Cloudflare Pages** (static export: build `npm run build`,
-output `out`). Every push to `main` deploys. See
+Production is **Cloudflare Workers static assets** (static export: build
+`npm run build`, deploy `npx wrangler deploy`, config in `wrangler.jsonc`).
+Every push to `main` deploys. See
 [docs/cloudflare-migration.md](docs/cloudflare-migration.md) for the DNS/email
 setup and [docs/seo-plan.md](docs/seo-plan.md) for the SEO roadmap.
 

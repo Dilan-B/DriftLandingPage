@@ -1,0 +1,17 @@
+// Cloudflare Workers deploy config: serves the static Next.js export in ./out.
+// No server code; Cloudflare just hosts the files. Built by `npm run build`,
+// uploaded by `npx wrangler deploy`.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Must match the project name in the Cloudflare dashboard.
+  "name": "driftlandingpage",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./out",
+    // /privacy -> /privacy/ to match next.config `trailingSlash: true`
+    "html_handling": "auto-trailing-slash",
+    // Unknown URLs get out/404.html with a real 404 status
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}

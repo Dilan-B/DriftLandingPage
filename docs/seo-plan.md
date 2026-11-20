@@ -29,7 +29,7 @@ domain penalized. What *does* work is below, ordered by impact.
 - Branded 1200×630 social share image on every page.
 - Proper `noindex` on 404s; `noindex` on `*.pages.dev` previews.
 - Removed the placeholder Google Analytics script (wasted requests).
-- Security and immutable-cache headers for Cloudflare Pages.
+- Security and immutable-cache headers for Cloudflare (`public/_headers`).
 - `itunes` app meta tag (Smart App Banner in Safari on iPhone).
 
 ## Next: content (needs your input and voice)

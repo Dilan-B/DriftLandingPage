@@ -54,3 +54,6 @@ drift-site.zip
 .DS_Store
 Thumbs.db
 .superpowers/
+
+# Cloudflare Wrangler local state
+.wrangler/
