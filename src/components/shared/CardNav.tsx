@@ -38,6 +38,7 @@ const ITEMS: NavItem[] = [
     links: [
       { label: "Support & FAQ", href: "/support", ariaLabel: "Support" },
       { label: "Contact", href: "/contact", ariaLabel: "Contact us" },
+      { label: "Partners", href: "/partners", ariaLabel: "Partners and teams" },
     ],
   },
   {
