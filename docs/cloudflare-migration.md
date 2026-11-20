@@ -7,9 +7,14 @@ damage to the domain's search or email reputation.
 **Email:** driftproductivity.com has **no mailbox**. Drift's customer email
 goes to `hello@ridilabs.com` (Titan, on the ridilabs.com domain, which this
 migration does not touch). The site's contact links all use that address
-(`CONTACT_INBOX` in `src/lib/links.ts`). So instead of carrying email records
-over, this guide marks driftproductivity.com as a **domain that sends no
-email**. That stops anyone from spoofing it, which protects its reputation.
+(`CONTACT_INBOX` in `src/lib/links.ts`), and no mailbox records are carried
+over, this guide only cleans up dead records.
+
+It **does send** email, though: **Resend** (on Amazon SES) is set up on the
+`send` subdomain and `resend._domainkey`, most likely for the app's
+transactional mail (password resets, verification). Those records must be kept
+exactly as they are. The guide removes only the dead cPanel leftovers and adds
+an SPF record for the bare domain.
 
 Order matters. Do the steps top to bottom and don't skip the checks.
 
@@ -26,7 +31,11 @@ Order matters. Do the steps top to bottom and don't skip the checks.
 | `MX` @ | `0 driftproductivity.com` | Leftover default pointing at the web server. There's no mailbox behind it. |
 | `TXT` @ (SPF) | `"DRIFTPRODUCTIVITY.COM."` | **Broken — no SPF.** Anyone can send mail claiming to be @driftproductivity.com. |
 | `TXT` default._domainkey (DKIM) | `"DEFAULT._DOMAINKEY.DRIFTPRODUCTIVITY.COM."` | Broken placeholder. |
-| `TXT` _dmarc | `v=DMARC1; p=none;` | Monitor-only. It doesn't block spoofing. |
+| `MX` send | `10 feedback-smtp.us-east-1.amazonses.com` | **Resend: keep.** |
+| `TXT` send | `v=spf1 include:amazonses.com ~all` | **Resend: keep.** |
+| `TXT` resend._domainkey | `p=MIGf…` (DKIM key) | **Resend: keep.** |
+| `TXT` _dmarc | `v=DMARC1; p=none;` | Monitor-only. Keep for now; tighten later (Step 9). |
+| `A` autodiscover, cpanel, ftp, ssh, webdisk, localhost | cPanel defaults | Unused once hosting moves. |
 | http:// and www | Both serve the site with `200` | **Duplicate content.** Google sees 4 copies of every page. Fixed by the redirects below. |
 
 ---
@@ -35,7 +44,7 @@ Order matters. Do the steps top to bottom and don't skip the checks.
 
 1. Bluehost → **Domains** → driftproductivity.com → **DNS**. Take a screenshot
    of the full zone. This is your backup and rollback reference.
-2. Confirm there's no email product for driftproductivity.com (Bluehost →
+2. Confirm there's no mailbox for driftproductivity.com (Bluehost →
    Email). If there turns out to be one, **stop** and update the email part of
    Step 3 before continuing.
 
@@ -63,33 +72,32 @@ static export in `out/`.
 ## Step 3 — Add the domain to Cloudflare (10 min)
 
 1. Cloudflare → **Add a domain** → `driftproductivity.com` → **Free** plan.
-2. Cloudflare scans the existing records. **Delete** all of these:
-   - `MX @ driftproductivity.com`
-   - the broken `TXT @ "DRIFTPRODUCTIVITY.COM."`
-   - the broken `TXT default._domainkey`
-   - the old `TXT _dmarc` (it gets replaced below)
-   - `A webmail`, and any scanned `mail`, `ftp`, `cpanel`, `autodiscover`, or
-     `autoconfig` records. They only served Bluehost's cPanel and mail.
-   - Keep `A @ 50.6.2.202` (orange cloud) and `CNAME www` for now, so the site
-     stays up until Step 5 replaces them.
-3. **Add** these "this domain sends no email" records (RFC 7505 / M3AAWG best
-   practice):
+2. Cloudflare scans the existing records. **Keep these exactly as imported:**
 
-   | Type | Name | Content | Notes |
+   | Type | Name | Content | Why |
    | --- | --- | --- | --- |
-   | MX | `@` | `.` with priority `0` | "Null MX": tells senders not to deliver here. If Cloudflare won't accept `.`, just have no MX record. |
-   | TXT | `@` | `v=spf1 -all` | No server may send as @driftproductivity.com |
-   | TXT | `_dmarc` | `v=DMARC1; p=reject; adkim=s; aspf=s;` | Receivers reject anything spoofing the domain |
-   | TXT | `*._domainkey` | `v=DKIM1; p=` | Revokes any DKIM key |
+   | A | `@` | `50.6.2.202` (Proxied) | Keeps the site up until Step 5 |
+   | CNAME | `www` | `driftproductivity.com` (Proxied) | Same |
+   | MX | `send` | `feedback-smtp.us-east-1.amazonses.com` (10) | Resend bounces |
+   | TXT | `send` | `v=spf1 include:amazonses.com ~all` | Resend SPF |
+   | TXT | `resend._domainkey` | `p=MIGf…` | Resend DKIM |
+   | TXT | `_dmarc` | `v=DMARC1; p=none;` | DMARC (monitor) |
 
-   Cloudflare may offer to add these for you (DNS → Email security, or
-   "prevent email spoofing"). Either way works.
+3. **Delete** the cPanel leftovers:
+   - A: `autodiscover`, `cpanel`, `ftp`, `ssh`, `webdisk`, `webmail`, `localhost`
+   - MX: `@` → `driftproductivity.com` (priority 0). No mailbox behind it.
+   - TXT: `@` → `"DRIFTPRODUCTIVITY.COM."` (broken)
+   - TXT: `default._domainkey` → `"DEFAULT._DOMAINKEY…"` (broken)
+4. **Add** one record:
 
-   > If you ever want `@driftproductivity.com` email later, use Cloudflare
-   > Email Routing (free forwarding) or a mailbox provider. Replace these
-   > four records with that provider's MX/SPF/DKIM, and loosen DMARC to
-   > `p=none` while testing.
-3. Cloudflare then shows you **two nameservers** (e.g. `xxx.ns.cloudflare.com`).
+   | Type | Name | Content | Why |
+   | --- | --- | --- | --- |
+   | TXT | `@` | `v=spf1 -all` | Nothing sends with the bare domain as its envelope sender, so nobody can spoof it. Resend is unaffected: it checks SPF on `send.driftproductivity.com`. |
+
+   Do **not** add a null MX, a wildcard `*._domainkey`, or DMARC
+   `p=reject`. Those are for domains that send no email, and they could hurt
+   Resend delivery.
+5. Cloudflare then shows you **two nameservers** (e.g. `xxx.ns.cloudflare.com`).
 
 ## Step 4 — Switch nameservers at Bluehost (2 min, then wait)
 
@@ -165,23 +173,28 @@ trailing slash on pages). Everything else must 301 there.
    **Software App**. (The Software App rich result itself needs real ratings,
    which we deliberately did not fake.)
 
-## Step 9 — Verify the anti-spoofing records (after Step 4 goes active)
+## Step 9 — Verify email after Step 4 goes active
 
-```bash
-nslookup -type=TXT driftproductivity.com 1.1.1.1
-```
+1. Check the records from a terminal:
 
-```bash
-nslookup -type=TXT _dmarc.driftproductivity.com 1.1.1.1
-```
+   ```bash
+   nslookup -type=TXT driftproductivity.com 1.1.1.1
+   ```
 
-You should see `v=spf1 -all` and `v=DMARC1; p=reject; ...`. A free checker
-like MXToolbox's "Domain Health" should show SPF and DMARC passing, with no
-mail server expected.
+   ```bash
+   nslookup -type=TXT resend._domainkey.driftproductivity.com 1.1.1.1
+   ```
 
-Also send a test message through the site's contact form. It opens an email to
-`hello@ridilabs.com`; make sure it arrives in the Titan inbox. (ridilabs.com's
-email is separate and isn't changed by any of this.)
+   You should see `v=spf1 -all` and the Resend DKIM key (`p=MIGf…`).
+2. Trigger a real app email (e.g. a password reset to your own Gmail) → open it
+   → ⋮ → **Show original**. You want `DKIM: PASS` and `DMARC: PASS`.
+   Resend's dashboard (Domains) should still show the domain as **Verified**.
+3. Send a test message through the site's contact form. It opens an email to
+   `hello@ridilabs.com`; make sure it arrives in the Titan inbox.
+   (ridilabs.com's email is separate and isn't changed by any of this.)
+4. Later (optional): after a few weeks of passing results, tighten DMARC to
+   `v=DMARC1; p=quarantine;` to block spoofed mail. Not before you've
+   confirmed Resend passes.
 
 ## Step 10 — Bluehost hosting
 
