@@ -18,7 +18,7 @@ const PricingSection = () => {
   const family = [
     "Link up to 5 kids' devices",
     "Send tasks straight to their phone",
-    "Kids finish, snap a photo, add a note",
+    "Kids finish the task and tap Done",
     "You approve — their screen time unlocks",
   ];
 
@@ -117,7 +117,7 @@ const PricingSection = () => {
                 <span className="text-ink-mid">/mo</span>
               </div>
               <p className="mt-2 text-sm text-ink-mid">
-                $7.99 for one child, up to $19.99 for five or more.
+                $7.99 for one child, up to $19.99 for five.
               </p>
               <ul className="mt-7 space-y-3 flex-1">
                 {family.map((item) => (

@@ -82,11 +82,53 @@ export const homeFaqSchema = {
   })),
 };
 
-export const breadcrumbSchema = (name: string, url: string) => ({
+export const breadcrumbSchema = (trail: { name: string; url: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name, item: url },
-  ],
+  itemListElement: [{ name: "Home", url: `${SITE_URL}/` }, ...trail].map(
+    (item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })
+  ),
+});
+
+/** Article schema for guides and comparisons. Describes only what's on the page. */
+export const articleSchema = ({
+  headline,
+  description,
+  url,
+  published,
+  updated,
+}: {
+  headline: string;
+  description: string;
+  url: string;
+  published: string;
+  updated: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline,
+  description,
+  url,
+  mainEntityOfPage: url,
+  image: `${SITE_URL}/og-image.png`,
+  datePublished: published,
+  dateModified: updated,
+  author: { "@id": ORG_ID },
+  publisher: { "@id": ORG_ID },
+  inLanguage: "en-US",
+});
+
+export const faqSchema = (faqs: { question: string; answer: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
 });

@@ -7,14 +7,14 @@ Drift is made for anyone who keeps opening the same apps without meaning to: stu
 ## How it works
 
 1. **Block**: pick the apps you lose time to. Drift applies Apple's Screen Time shield to them.
-2. **Earn**: complete tasks you define (walk, read, tidy, stretch, call someone back) and you decide how many minutes each one earns. Tasks can be weighted, so a deep-clean session can earn more than a short walk.
+2. **Earn**: complete tasks you add (walk, read, tidy, study, work out). Each task earns about half its length in screen time, up to 60 minutes per task, so a 30-minute workout earns 15 minutes. Focus sessions earn time too.
 3. **Spend**: open a blocked app and your earned balance counts down only while it's open. When the balance runs out, the shield comes back.
 
 ## Key features
 
 - System-level blocking through Apple Screen Time, not an overlay that can be dismissed
 - Earned-time balance that drains only while a blocked app is open
-- Weighted tasks and recurring tasks (chores, workouts, reading, bedtime resets)
+- Recurring tasks (chores, workouts, reading, bedtime resets)
 - Locked windows that stay blocked even with saved minutes (bedtime, school, deep work)
 - Task verification: mark tasks complete or submit quick proof; AI-reviewed proof can be appealed and appeals are reviewed manually
 - Family plan: a parent assigns tasks to their kids' devices and approves them before screen time unlocks
@@ -26,7 +26,7 @@ Apple's built-in limits are easy to tap past ("Ignore Limit"). Drift uses the sa
 ## Pricing
 
 - Personal: $4.99/month or $29.99/year
-- Family: $7.99/month for one child, up to $19.99/month for five or more children
+- Family: $7.99/month for one child, up to $19.99/month for five children
 - There is no free tier.
 
 ## Links
@@ -38,6 +38,12 @@ Apple's built-in limits are easy to tap past ("Ignore Limit"). Drift uses the sa
 - [Privacy Policy](https://driftproductivity.com/privacy/): Drift stores only what the app needs and does not sell data
 - [Partners](https://driftproductivity.com/partners/): free access for marketing partners (creators, newsletters, communities) and custom plans for teams, schools, clinics, and clubs
 - [Contact](https://driftproductivity.com/contact/): reach the Drift team at hello@ridilabs.com
+
+## Guides
+
+- [Drift vs Apple Screen Time](https://driftproductivity.com/vs/apple-screen-time/): honest comparison, including where Apple's free tools are enough
+- [How to stop doomscrolling](https://driftproductivity.com/guides/how-to-stop-doomscrolling/): seven practical habits
+- [How to reduce screen time on iPhone](https://driftproductivity.com/guides/reduce-screen-time-iphone/): step-by-step with built-in iOS settings
 
 ## Optional
 

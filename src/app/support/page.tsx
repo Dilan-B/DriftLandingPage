@@ -101,7 +101,7 @@ const categories = [
       {
         question: "How much does Drift cost?",
         answer:
-          "Personal is $4.99/month or $29.99/year. Family — where a parent assigns tasks to their kids' devices and approves them to unlock screen time — runs $7.99/month for one child up to $19.99/month for five or more. There's no free tier.",
+          "Personal is $4.99/month or $29.99/year. Family — where a parent assigns tasks to their kids' devices and approves them to unlock screen time — runs $7.99/month for one child up to $19.99/month for five. There's no free tier.",
       },
       {
         question: "Is Drift used in research?",

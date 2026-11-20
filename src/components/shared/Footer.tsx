@@ -14,6 +14,14 @@ const Footer = () => {
       ],
     },
     {
+      title: "Guides",
+      links: [
+        { href: "/guides/how-to-stop-doomscrolling", label: "Stop doomscrolling" },
+        { href: "/guides/reduce-screen-time-iphone", label: "Reduce screen time" },
+        { href: "/vs/apple-screen-time", label: "Drift vs Screen Time" },
+      ],
+    },
+    {
       title: "Legal",
       links: [
         { href: "/privacy", label: "Privacy Policy" },
@@ -40,7 +48,7 @@ const Footer = () => {
   return (
     <footer className="mt-24 border-t border-line bg-paper-cream">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <span className="font-wordmark font-bold text-2xl tracking-tight text-ink-deep">
