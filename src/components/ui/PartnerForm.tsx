@@ -8,6 +8,7 @@ import {
   type PartnerFormData,
 } from "@/lib/validation";
 import { CONTACT_INBOX } from "@/lib/links";
+import { sendInquiry } from "@/lib/inquiry";
 import { PARTNER_TRACK_EVENT } from "@/components/ui/PartnerTrackLink";
 
 const inputClasses =
@@ -38,6 +39,7 @@ const PartnerForm = () => {
   const [errors, setErrors] = useState<
     Partial<Record<keyof FormState, string>>
   >({});
+  const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
     "idle"
@@ -90,20 +92,16 @@ const PartnerForm = () => {
       return;
     }
 
-    // Static-hosting friendly: open the visitor's email client with the
-    // inquiry prefilled. No backend required.
     try {
       const { name, email, organization, track, size, message } =
         validation.data;
-      const sizeText = size?.trim() ? size.trim() : "—";
-      const subject = encodeURIComponent(
-        `[Drift Partners] ${track} — ${organization}`
+      await sendInquiry(
+        "partner",
+        { name, email, organization, track, size, message },
+        honeypot
       );
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nOrganization: ${organization}\nTrack: ${track}\nSize: ${sizeText}\n\n${message}`
-      );
-      window.location.href = `mailto:${CONTACT_INBOX}?subject=${subject}&body=${body}`;
       setSubmitStatus("success");
+      setFormData(initialState);
     } catch (error) {
       console.error("Form submission error:", error);
       setSubmitStatus("error");
@@ -114,6 +112,19 @@ const PartnerForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+      {/* Honeypot: hidden from people, bots fill it in. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="partner-website">Website</label>
+        <input
+          type="text"
+          id="partner-website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
       <div>
         <label htmlFor="partner-name" className={labelClasses}>
           Name
@@ -282,12 +293,8 @@ const PartnerForm = () => {
           role="status"
           className="rounded-btn bg-earn-sage-lo border border-line px-4 py-3 text-earn-sage text-[15px]"
         >
-          Your email app should open with your message ready to send. If it
-          doesn&apos;t, email us at{" "}
-          <a href={`mailto:${CONTACT_INBOX}`} className="underline">
-            {CONTACT_INBOX}
-          </a>
-          .
+          Thanks, your inquiry is in. We&apos;ll reply to the email you gave
+          us, usually within a few days.
         </div>
       )}
       {submitStatus === "error" && (
