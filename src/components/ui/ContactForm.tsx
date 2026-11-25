@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation";
 import { CONTACT_INBOX } from "@/lib/links";
+import { sendInquiry } from "@/lib/inquiry";
 
 const inputClasses =
   "w-full rounded-btn bg-paper-warm border border-line px-4 py-3 text-[15px] text-ink-deep placeholder:text-ink-faint transition-colors focus:outline-none focus:border-earn-sage";
@@ -17,6 +18,7 @@ const ContactForm = () => {
   const [errors, setErrors] = useState<
     Partial<Record<keyof ContactFormData, string>>
   >({});
+  const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
     "idle"
@@ -54,17 +56,8 @@ const ContactForm = () => {
       return;
     }
 
-    // Static-hosting friendly: open the visitor's email client with the
-    // message prefilled. No backend required. (Swap for Formspree later if
-    // you want in-page submission.)
     try {
-      const subject = encodeURIComponent(
-        `[Drift] ${formData.subject} — from ${formData.name}`
-      );
-      const body = encodeURIComponent(
-        `${formData.message}\n\n— ${formData.name} (${formData.email})`
-      );
-      window.location.href = `mailto:${CONTACT_INBOX}?subject=${subject}&body=${body}`;
+      await sendInquiry("contact", validation.data, honeypot);
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setSubmitStatus("idle"), 6000);
@@ -78,6 +71,19 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+      {/* Honeypot: hidden from people, bots fill it in. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="contact-website">Website</label>
+        <input
+          type="text"
+          id="contact-website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
       <div>
         <label
           htmlFor="name"
@@ -167,13 +173,17 @@ const ContactForm = () => {
       </div>
 
       {submitStatus === "success" && (
-        <div className="rounded-btn bg-earn-sage-lo border border-line px-4 py-3 text-earn-sage text-[15px]">
+        <div role="status" className="rounded-btn bg-earn-sage-lo border border-line px-4 py-3 text-earn-sage text-[15px]">
           Thanks for reaching out 🌱 We&apos;ll get back to you soon.
         </div>
       )}
       {submitStatus === "error" && (
-        <div className="rounded-btn bg-clay-lo border border-line px-4 py-3 text-bark text-[15px]">
-          Something went wrong. Please try again or email us directly.
+        <div role="alert" className="rounded-btn bg-clay-lo border border-line px-4 py-3 text-bark text-[15px]">
+          Something went wrong. Please try again or email us at{" "}
+          <a href={`mailto:${CONTACT_INBOX}`} className="underline">
+            {CONTACT_INBOX}
+          </a>
+          .
         </div>
       )}
 
